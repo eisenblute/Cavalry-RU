@@ -1,0 +1,724 @@
+/* ===== Сброс и базовые стили ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+
+:root {
+    --bg: #0d0d0d;
+    --bg-header: #1a1a1a;
+    --bg-sidebar: #111111;
+    --bg-card: #151515;
+
+    --border: #2a2a2a;
+
+    --text: #e8e8e8;
+    --text-muted: #a0a0a0;
+    --text-dim: #666;
+
+    --accent: #6ea8fe;
+    --accent-hover: #4c8ce8;
+
+    --success: #4caf50;
+    --warning: #ffb74d;
+    --danger: #ef5350;
+
+    --shadow-sidebar: 4px 0 20px rgba(0, 0, 0, 0.5);
+    --overlay-bg: rgba(0, 0, 0, 0.6);
+
+    --scrollbar-thumb: #2a2a2a;
+    --scrollbar-thumb-hover: #3a3a3a;
+
+    --info-bg: rgba(110, 168, 254, 0.08);
+    --info-border: #6ea8fe;
+    --info-text: #b8d0f5;
+
+    --warn-bg: rgba(255, 183, 77, 0.08);
+    --warn-border: #ffb74d;
+    --warn-text: #f5d9a8;
+
+    --note-bg: rgba(160, 160, 160, 0.08);
+    --note-border: #a0a0a0;
+    --note-text: #cccccc;
+
+    --tip-bg: rgba(76, 175, 80, 0.08);
+    --tip-border: #4caf50;
+    --tip-text: #b8e6bb;
+
+    --box-title: #ffffff;
+    --code-bg: #1a1a1a;
+    --code-text: #e0a0a0;
+    --pre-bg: #1a1a1a;
+
+    /* 👇 Ширина сайдбара — меняется в одном месте */
+    --sidebar-width: 320px;
+    --header-height: 64px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* ===== Базовая разметка ===== */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                 "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* ===== Шапка (во всю ширину сверху) ===== */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--header-height);
+    background-color: var(--bg-header);
+    border-bottom: 1px solid var(--border);
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 200;
+}
+
+/* ===== Сайдбар — прижат к левому краю, на всю высоту ===== */
+aside {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    bottom: 0;
+    width: var(--sidebar-width);
+    background-color: var(--bg-sidebar);
+    border-right: 1px solid var(--border);
+    padding: 1.2rem 0.9rem;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: #2a2a2a transparent;
+    z-index: 100;
+}
+
+aside::-webkit-scrollbar {
+    width: 8px;
+}
+
+aside::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+aside::-webkit-scrollbar-thumb {
+    background: #2a2a2a;
+    border-radius: 4px;
+}
+
+aside::-webkit-scrollbar-thumb:hover {
+    background: #3a3a3a;
+}
+
+
+/* Заголовок группы с кликабельной ссылкой внутри */
+.nav-group-title.has-link {
+    padding: 0;                 /* отступы переносим на ссылку */
+    gap: 0;
+}
+
+.nav-group-title.has-link .nav-group-link {
+    flex: 1;
+    color: inherit;
+    text-decoration: none;
+    padding: 0.5rem 0.6rem;
+    border-radius: 4px 0 0 4px;
+    transition: color 0.15s, background-color 0.15s;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.nav-group-title.has-link .nav-group-link:hover {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.04);
+    text-decoration: none;
+}
+
+/* Стрелка — отдельная зона клика */
+.nav-group-title.has-link .arrow {
+    padding: 0.5rem 0.7rem;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+
+.nav-group-title.has-link .arrow:hover {
+    background-color: rgba(110, 168, 254, 0.12);
+}
+
+/* Активная ссылка в заголовке группы */
+.nav-group-title.has-link .nav-group-link.active {
+    color: #fff;
+    background-color: rgba(110, 168, 254, 0.15);
+    font-weight: 500;
+}
+
+
+/* ===== Контент — сдвинут вправо от сайдбара ===== */
+main {
+    margin-left: var(--sidebar-width);
+    margin-top: var(--header-height);
+    padding: 2.5rem 3rem 4rem;
+    min-height: calc(100vh - var(--header-height));
+}
+
+.content {
+    max-width: 1000px;
+    margin: 0 auto;   /* 👈 центрируем */
+}
+
+
+
+/*
+.logo {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+}
+
+.logo:hover {
+    color: var(--accent);
+}
+*/
+
+.logo {
+    display: flex;              /* 👈 включаем flex */
+    align-items: center;        /* 👈 выравниваем по вертикальному центру */
+    gap: 0.5rem;                /* отступ между иконкой и текстом */
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #4FFD7A;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+}
+
+.logo img {
+    display: block;             /* убираем baseline-отступ снизу */
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;             /* иконка не сжимается */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.search-box {
+    background-color: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.4rem 0.8rem;
+    color: var(--text);
+    font-size: 0.9rem;
+    width: 200px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.search-box:focus {
+    border-color: var(--accent);
+}
+
+nav.top-nav a {
+    color: var(--text-muted);
+    text-decoration: none;
+    margin-left: 1.5rem;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+}
+
+nav.top-nav a:hover {
+    color: #fff;
+}
+
+.burger {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* ===== Основной контейнер ===== */
+.container {
+    display: flex;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 2rem;
+    gap: 3rem;
+    width: 100%;
+    flex: 1;
+}
+
+
+
+/* ===== Группа ===== */
+.nav-group {
+    margin-bottom: 0.2rem;
+}
+
+/* ===== Заголовок группы (НЕ кнопка, просто текст со стрелкой) ===== */
+.nav-group-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.5rem 0.6rem;
+    margin: 0;
+    background: none;
+    border: none;
+    border-radius: 4px;
+    color: var(--text-muted);
+    font-family: inherit;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    text-transform: none;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.15s, background-color 0.15s;
+    outline: none;
+}
+
+.nav-group-title:hover {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.04);
+}
+
+.nav-group-title:focus-visible {
+    background-color: rgba(110, 168, 254, 0.1);
+    color: #fff;
+}
+
+/* Стрелка */
+.nav-group-title .arrow {
+    font-size: 0.6rem;
+    opacity: 0.55;
+    transition: transform 0.2s ease;
+    transform: rotate(0deg);
+    line-height: 1;
+}
+
+.nav-group.collapsed .nav-group-title .arrow {
+    transform: rotate(-90deg);
+}
+
+/* ===== Содержимое группы ===== */
+.nav-group-content {
+    max-height: 2000px;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.2s ease;
+    opacity: 1;
+}
+
+.nav-group.collapsed .nav-group-content {
+    max-height: 0;
+    opacity: 0;
+}
+
+.nav-group-content ul {
+    list-style: none;
+    padding: 0.2rem 0 0.4rem 0.6rem;
+    margin: 0;
+    border-left: 1px solid var(--border);
+    margin-left: 0.6rem;
+}
+
+.nav-group-content li {
+    margin: 0;
+}
+
+.nav-group-content a {
+    display: block;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.88rem;
+    padding: 0.32rem 0.6rem;
+    border-radius: 4px;
+    line-height: 1.4;
+    transition: color 0.15s, background-color 0.15s;
+}
+
+.nav-group-content a:hover {
+    color: #fff;
+    background-color: rgba(110, 168, 254, 0.08);
+}
+
+.nav-group-content a.active {
+    color: #fff;
+    background-color: rgba(110, 168, 254, 0.15);
+    font-weight: 500;
+}
+
+/* ===== Вложенные группы (2+ уровень) ===== */
+.nav-group-content .nav-group {
+    margin: 0;
+}
+
+.nav-group-content .nav-group-title {
+    padding-left: 0.6rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+.nav-group-content .nav-group-title:hover {
+    color: #fff;
+}
+
+.nav-group-content .nav-group-content ul {
+    padding-left: 0.8rem;
+    margin-left: 0.6rem;
+    border-left: 1px solid var(--border);
+}
+
+/* Активный заголовок группы (если это ссылка) */
+a.nav-group-title.active {
+    color: #fff;
+    background-color: rgba(110, 168, 254, 0.15);
+    border-radius: 4px;
+}
+
+a.nav-group-title {
+    text-decoration: none;
+}
+
+a.nav-group-title:hover {
+    text-decoration: none;
+}
+
+/* Отступы по уровням — визуальная иерархия */
+.nav-group-content { padding-left: 0.3rem; }
+
+/* ===== Контент ===== */
+main {
+    flex: 1;
+    min-width: 0;
+}
+
+h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 1.5rem;
+    line-height: 1.25;
+}
+
+h2 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #fff;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+}
+
+h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #fff;
+    margin-top: 1.8rem;
+    margin-bottom: 0.8rem;
+}
+
+p {
+    margin-bottom: 1rem;
+    color: #c0c0c0;
+}
+
+main a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+main a:hover {
+    text-decoration: underline;
+}
+
+ul.notes,
+ul.content-list {
+    list-style: none;
+    margin: 1.5rem 0;
+}
+
+ul.content-list li {
+    margin-bottom: 0.6rem;
+    padding-left: 1.2rem;
+    position: relative;
+    color: #c0c0c0;
+}
+
+ul.content-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+}
+
+ul.notes li {
+    margin-bottom: 0.6rem;
+}
+
+ul.notes a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+ul.notes a:hover {
+    text-decoration: underline;
+}
+
+ul.notes a::after {
+    content: " →";
+    opacity: 0.6;
+}
+
+
+
+/* ===== Инфо-блоки ===== */
+.info-box,
+.warn-box,
+.note-box,
+.tip-box {
+    padding: 0.9rem 1.2rem;
+    border-radius: 4px;
+    margin: 1.5rem 0;
+    font-size: 0.92rem;
+    border-left: 3px solid;
+}
+
+.info-box {
+    background-color: rgba(110, 168, 254, 0.08);
+    border-left-color: var(--accent);
+    color: #6ea8fe;
+}
+
+.warn-box {
+    background-color: rgba(255, 183, 77, 0.08);
+    border-left-color: var(--warning);
+    color: #ffb74d;
+}
+
+.note-box {
+    background-color: rgba(160, 160, 160, 0.08);
+    border-left-color: var(--text-muted);
+    color: #cccccc;
+}
+
+.tip-box {
+    background-color: rgba(76, 175, 80, 0.08);
+    border-left-color: var(--success);
+    color: #b8e6bb;
+}
+
+.info-box strong,
+.warn-box strong,
+.note-box strong,
+.tip-box strong {
+    color: #fff;
+}
+
+/* Строка с иконкой и заголовком */
+.boxtitle {
+    display: flex;
+    align-items: center;   
+    gap: 0.2rem;
+    font-weight: 600;
+    color: currentcolor;
+    margin-bottom: 0.4rem;
+    font-size: 0.95rem;
+}
+
+.icon {
+  margin-right: 0.5rem; /* Отступ со всех сторон */
+}
+
+
+
+/* ===== Таблицы ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: 0.92rem;
+}
+
+th {
+    text-align: left;
+    padding: 0.7rem 1rem;
+    background-color: var(--bg-card);
+    color: #fff;
+    border-bottom: 1px solid var(--border);
+    font-weight: 600;
+}
+
+td {
+    padding: 0.7rem 1rem;
+    border-bottom: 1px solid var(--border);
+    color: #c0c0c0;
+}
+
+tr:hover td {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+code {
+    background-color: #1a1a1a;
+    color: #e0a0a0;
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+    font-family: "SF Mono", Consolas, Monaco, monospace;
+    font-size: 0.88em;
+}
+
+pre {
+    background-color: #1a1a1a;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1rem 1.2rem;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+}
+
+pre code {
+    background: none;
+    padding: 0;
+    color: #e8e8e8;
+}
+
+/* ===== Навигация между страницами ===== */
+.page-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    gap: 1rem;
+}
+
+.page-nav a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.95rem;
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    transition: all 0.2s;
+    background-color: var(--bg-card);
+}
+
+.page-nav a:hover {
+    border-color: var(--accent);
+    background-color: rgba(110, 168, 254, 0.08);
+    text-decoration: none;
+}
+
+/* ===== Подвал ===== */
+footer {
+    margin-left: var(--sidebar-width);
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--border);
+}
+
+/* ===== Мобильная адаптация ===== */
+@media (max-width: 900px) {
+
+    /* Сайдбар уезжает влево */
+    aside {
+        transform: translateX(-100%);
+        transition: transform 0.25s ease;
+        width: 280px;
+        box-shadow: 4px 0 20px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Класс .open добавляется через JS */
+    aside.open {
+        transform: translateX(0);
+    }
+
+    /* Контент больше не сдвигается */
+    main,
+    footer {
+        margin-left: 0;
+        padding: 1.5rem 1.2rem 3rem;
+    }
+
+    /* Затемнение под сайдбаром */
+    .overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 90;
+    }
+
+    .overlay.open {
+        display: block;
+    }
+
+    /* Кнопка-бургер в шапке */
+    .burger {
+        display: block;
+        background: none;
+        border: none;
+        color: var(--text);
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding: 0.3rem 0.6rem;
+    }
+
+    /* Прячем верхнюю навигацию */
+    nav.top-nav {
+        display: none;
+    }
+
+    /* Search box на мобиле — прячем или сужаем */
+    .search-box {
+        width: 140px;
+    }
+}
+
+/* На десктопе бургер скрыт */
+@media (min-width: 901px) {
+    .burger {
+        display: none;
+    }
+}
