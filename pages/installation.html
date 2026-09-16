@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Скачивание и установка | Cavalry</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header></header>
+
+<aside></aside>
+
+<main>
+    <div class="content">
+
+        <h1>Скачивание и установка</h1>
+
+        <h2>Скачивание</h2>
+        <p>
+            Установщики для macOS и Windows доступны для скачивания
+            на официальном сайте <a href="https://cavalry.studio" target="_blank" rel="noopener">cavalry.studio</a>.
+        </p>
+        
+        <div class="warn-box">
+            <div class="boxtitle">
+                <img class="icon" src="../imgs/warn.svg" width="20" height="20" alt="">
+                <span>Внимание</span>
+            </div>
+            <p>
+                Из-за того, что компания Canva запретила доступ к своим продуктам на территории Российской Федерации, представленная выше ссылка более недействительна без использования VPN!
+            </p>
+        </div>
+        
+        <p>Однако, пользователи из РФ могут свободно скачать данную программу через <a href="https://vk.ru/cavalry_mograph" target="_blank" rel="noopener">группу в ВК</a>.</p> 
+
+<p>Там представлена последняя, портативная версия Cavalry с русифицированным, встроенным обучающим гайдом и немного расширенным и модифицированным блоком "Советы и рекомендации", тоже на русском языке.
+        </p>
+
+        <h2>Установка</h2>
+
+        <h3>macOS</h3>
+        <p>
+            Дважды щёлкните по файлу <code>.dmg</code>, затем перетащите
+            иконку Cavalry на иконку <strong>Applications</strong>.
+        </p>
+        <p>
+            По умолчанию Cavalry устанавливается в
+            <code>Macintosh HD/Applications/</code>.
+        </p>
+
+        <div class="note-box">
+            <div class="boxtitle">
+                <img class="icon" src="../imgs/note.svg" width="20" height="20" alt="">
+                <span>Примечание</span>
+            </div>
+            <p>
+                Установщик для macOS — это Universal Binary, поэтому
+                поддерживаются как чипы Intel, так и Apple Silicon.
+                Установщик автоматически выберет правильную версию
+                в зависимости от вашего процессора.
+            </p>
+        </div>
+
+        <h3>Windows</h3>
+        
+         <p>
+            Если вы используете версию из группы ВК, то просто распакуйте <code>архив</code> в удобное для вас место.
+        </p>
+        
+        
+        <p>
+            Если же вы применяете официальный установщик, запустите файл <code>.msi</code> и следуйте инструкциям.
+        </p>
+        <p>
+            По умолчанию Cavalry устанавливается в
+            <code>C:\Program Files\Cavalry</code>.
+        </p>
+
+        <p>
+            На Windows можно выполнить автоматическую установку
+            с помощью <code>msiexec</code>. Запустите <strong>Командную строку</strong>
+            от имени администратора и выполните следующую команду
+            (замените <code>Cavalry_XXXX.msi</code> на имя установщика):
+        </p>
+
+        <pre><code>msiexec /i "C:\Path\To\Cavalry_XXXX.msi" /quiet /norestart</code></pre>
+
+        <div class="info-box">
+            <div class="boxtitle">
+                <img class="icon" src="../imgs/info.svg" width="20" height="20" alt="">
+                <span>Информация</span>
+            </div>
+            <p>
+                Чтобы запустить <strong>Командную строку</strong> от имени
+                администратора, щёлкните по ней правой кнопкой мыши и выберите <strong>Дополнительно - Запуск от имени администратора</strong>.
+            </p>
+        </div>
+
+        <h2>Удаление</h2>
+
+        <h3>macOS</h3>
+        <p>
+            Просто удалите пакет <code>Cavalry.app</code> из папки
+            <code>/Applications/</code>. Также можно вручную удалить
+            следующие папки:
+        </p>
+        <ul class="content-list">
+            <li><code>~/Library/Application Support/Cavalry</code></li>
+            <li><code>~/Library/Preferences/Cavalry</code></li>
+        </ul>
+
+        <h3>Windows</h3>
+        <p>
+            Если вы применяли стандартный установщик, тогда используйте <strong>Установка/Удаление программ</strong>.
+        </p>
+        
+        <p>Если же вы устанавливали версию из группы ВК, то просто удалите папку с программой.</p>
+
+        <div class="warn-box">
+            <div class="boxtitle">
+                <img class="icon" src="../imgs/warn.svg" width="20" height="20" alt="">
+                <span>Внимание</span>
+            </div>
+            <p>
+               Несмотря на то, что ВК версия является портативной, некоторые настройки всё равно находятся на системном диске. Чтобы полностью убрать следы программы, удалите также следующие папки:
+ 
+            </p>
+
+<ul class="content-list">
+            <li><code>C:\Users\Пользователь\AppData\Roaming\Cavalry</code></li>
+            <li><code>C:\Users\Пользователь\AppData\Local\Cavalry</code></li>
+        </ul>
+
+
+        </div>
+        
+
+        <div class="page-nav">
+            <a href="requirements.html">◄ Системные требования</a>
+            <a href="quick-start.html">Быстрый старт ►</a>
+        </div>
+
+    </div>
+</main>
+
+<footer></footer>
+
+<script src="../sidebar.js"></script>
+<script src="../header.js"></script>
+<script src="../footer.js"></script>
+<script src="../script.js"></script>
+</body>
+</html>

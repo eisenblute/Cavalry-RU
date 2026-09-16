@@ -6,7 +6,7 @@
 
     const headerHTML = `
         
-        <a href="${prefix}index.html" class="logo"><img src="imgs/logo.svg" width="48" height="48"> Cavalry-RU</a>
+        <a href="${prefix}index.html" class="logo"><img src="${prefix}imgs/logo.svg" width="48" height="48"> Cavalry-RU</a>
         <div class="header-right">
             
             <button class="burger">☰</button>

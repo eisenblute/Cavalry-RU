@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Системные требования | Cavalry</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header></header>
+
+<aside></aside>
+
+<main>
+    <div class="content">
+
+        <h1>Системные требования</h1>
+
+        <h2>Операционная система</h2>
+
+        <h3>macOS</h3>
+        <p>macOS 12.0 (Monterey) и выше.</p>
+
+        <h4>Поддержка macOS</h4>
+        <p>Cavalry 1.5.6 — последняя версия, поддерживающая macOS 10.14 и выше.</p>
+        <p>Cavalry 1.1.1 — последняя версия, поддерживающая macOS 10.13 и выше.</p>
+
+        <h3>Windows</h3>
+        <p>Windows 10 и выше.</p>
+
+        <h2>Аппаратное обеспечение</h2>
+
+        <h3>Процессор (CPU)</h3>
+
+        <h4>macOS</h4>
+        <p>Intel или ARM (Apple Silicon).</p>
+
+        <h4>Windows</h4>
+        <p>Intel или AMD.</p>
+
+        <h4>ARM-процессоры в Windows</h4>
+        <p>
+            Для машин с ARM-процессорами под Windows будет использоваться
+            эмулятор Prism — производительность может снизиться.
+        </p>
+
+        <h3>Видеокарта (GPU)</h3>
+        <p>Видеокарта, совместимая с OpenGL 4.1 Core Profile.</p>
+
+        <h4>Intel</h4>
+        <p>Архитектура должна быть Gen. 12 Alder Lake или новее.</p>
+        <ul class="content-list">
+            <li>
+                <a href="https://downloadcenter.intel.com/product/80939/Graphics-Drivers" target="_blank" rel="noopener">
+                    Драйверы Intel Graphics
+                </a>
+            </li>
+        </ul>
+
+        <h4>NVIDIA</h4>
+        <ul class="content-list">
+            <li>
+                <a href="https://www.nvidia.com/Download/index.aspx" target="_blank" rel="noopener">
+                    Загрузка драйверов NVIDIA
+                </a>
+            </li>
+        </ul>
+
+        <h4>AMD</h4>
+        <ul class="content-list">
+            <li>
+                <a href="https://www.amd.com/en/support" target="_blank" rel="noopener">
+                    Поддержка AMD
+                </a>
+            </li>
+        </ul>
+
+        <h4>Windows</h4>
+        <p>
+            Если части интерфейса отрисовываются некорректно — это признак
+            проблемы с графикой.
+        </p>
+        <p>Убедитесь, что драйверы видеокарты обновлены до последней версии.</p>
+
+        <div class="tip-box">
+            <div class="boxtitle">
+                <img class="icon" src="../imgs/tip.svg" width="20" height="20" alt="">
+                <span>Совет</span>
+            </div>
+            <p>
+                На ноутбуках с Windows может быть установлено несколько
+                видеокарт. В этом случае Cavalry попытается автоматически
+                выбрать карту с режимом <strong>High performance</strong>.
+                Это также можно задать вручную:
+                <strong>Settings > System > Display > Graphics</strong>,
+                найдите Cavalry или нажмите <strong>Browse</strong>
+                (в разделе <strong>Custom Options for Apps</strong>),
+                добавьте Cavalry и установите режим <strong>High performance</strong>.
+            </p>
+        </div>
+
+        <h3>Память</h3>
+        <p>Минимум 512 МБ оперативной памяти.</p>
+
+        <h3>Сеть</h3>
+        <p>Для входа в Cavalry требуется подключение к интернету.</p>
+
+        <h2>Системная диагностика</h2>
+        <p>
+            Откройте окно <strong>Help > System Diagnostics</strong>, чтобы
+            просмотреть информацию о вашей системе. Это может пригодиться
+            при обращении в поддержку для решения проблем.
+        </p>
+
+        <div class="page-nav">
+            <a href="installation.html">Скачивание и установка ►</a>
+        </div>
+
+    </div>
+</main>
+
+<footer></footer>
+
+<script src="../sidebar.js"></script>
+<script src="../header.js"></script>
+<script src="../footer.js"></script>
+<script src="../script.js"></script>
+</body>
+</html>

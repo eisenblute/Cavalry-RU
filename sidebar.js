@@ -40,41 +40,41 @@
             children: [
             { title: "Главное окно", href: `${prefix}pages/logs.html` },
                 { title: "Меню", children: [
-                    { title: "File (Файл)", href: `${prefix}pages/menu-file.html` },
-                    { title: "Edit (Правка)", href: `${prefix}pages/menu-edit.html` },
-                    { title: "View (Вид)", href: `${prefix}pages/menu-view.html` },
-                    { title: "Composition (Композиция)", href: `${prefix}pages/menu-composition.html` },
-                    { title: "Create (Создание)", href: `${prefix}pages/menu-create.html` },
-                    { title: "Animation (Анимация)", href: `${prefix}pages/menu-animation.html` },
-                    { title: "Shape (Форма)", href: `${prefix}pages/menu-shape.html` },
-                    { title: "Tool (Инструмент)", children: [
-                        { title: "Инструменты", href: `${prefix}pages/tool-menu-items.html` },
-                        { title: "Arc (Арка)", href: `${prefix}pages/tool-arc.html` },
-                        { title: "Arrow (Стрелка)", href: `${prefix}pages/tool-arrow.html` },
-                        { title: "Camera (Камера)", href: `${prefix}pages/tool-camera.html` },
-                        { title: "Capsule (Капсула)", href: `${prefix}pages/tool-capsule.html` },
-                        { title: "Cogwheel (Шестерня)", href: `${prefix}pages/tool-cogwheel.html` },
-                        { title: "Edit Shape (Правка формы)", href: `${prefix}pages/tool-edit-shape.html` },
-                        { title: "Ellipse (Эллипс)", href: `${prefix}pages/tool-ellipse.html` },
-                        { title: "Line (Линия)", href: `${prefix}pages/tool-line.html` },
-                        { title: "Mesh (Меш)", href: `${prefix}pages/tool-mesh.html` },
-                        { title: "Pen (Ручка)", href: `${prefix}pages/tool-pen.html` },
-                        { title: "Pencil (Карандаш)", href: `${prefix}pages/tool-pencil.html` },
-                        { title: "Pivot (Точка координат)", href: `${prefix}pages/tool-pivot.html` },
-                        { title: "Polygon (Многоугольник)", href: `${prefix}pages/tool-polygon.html` },
-                        { title: "Rectangle (Прямоугольник)", href: `${prefix}pages/tool-rectangle.html` },
-                        { title: "Select (Выделение)", href: `${prefix}pages/tool-select.html` },
-                        { title: "Star (Звезда)", href: `${prefix}pages/tool-star.html` },
-                        { title: "Super Ellipse (Суперэллипс)", href: `${prefix}pages/tool-super-ellipse.html` },
-                        { title: "Super Shape (Суперформа)", href: `${prefix}pages/tool-super-shape.html` },
-                        { title: "Text (Текст)", href: `${prefix}pages/tool-text.html` },
-                        { title: "Tracking (Трекинг)", href: `${prefix}pages/tool-tracking.html` },
+                    { title: "File", href: `${prefix}pages/menu-file.html` },
+                    { title: "Edit", href: `${prefix}pages/menu-edit.html` },
+                    { title: "View", href: `${prefix}pages/menu-view.html` },
+                    { title: "Composition", href: `${prefix}pages/menu-composition.html` },
+                    { title: "Create", href: `${prefix}pages/menu-create.html` },
+                    { title: "Animation", href: `${prefix}pages/menu-animation.html` },
+                    { title: "Shape", href: `${prefix}pages/menu-shape.html` },
+                    { title: "Tool", children: [
+                        { title: "Tool Menu Items", href: `${prefix}pages/tool-menu-items.html` },
+                        { title: "Arc", href: `${prefix}pages/tool-arc.html` },
+                        { title: "Arrow ", href: `${prefix}pages/tool-arrow.html` },
+                        { title: "Camera", href: `${prefix}pages/tool-camera.html` },
+                        { title: "Capsule", href: `${prefix}pages/tool-capsule.html` },
+                        { title: "Cogwheel", href: `${prefix}pages/tool-cogwheel.html` },
+                        { title: "Edit Shape", href: `${prefix}pages/tool-edit-shape.html` },
+                        { title: "Ellipse", href: `${prefix}pages/tool-ellipse.html` },
+                        { title: "Line", href: `${prefix}pages/tool-line.html` },
+                        { title: "Mesh", href: `${prefix}pages/tool-mesh.html` },
+                        { title: "Pen", href: `${prefix}pages/tool-pen.html` },
+                        { title: "Pencil", href: `${prefix}pages/tool-pencil.html` },
+                        { title: "Pivot", href: `${prefix}pages/tool-pivot.html` },
+                        { title: "Polygon", href: `${prefix}pages/tool-polygon.html` },
+                        { title: "Rectangle", href: `${prefix}pages/tool-rectangle.html` },
+                        { title: "Select", href: `${prefix}pages/tool-select.html` },
+                        { title: "Star", href: `${prefix}pages/tool-star.html` },
+                        { title: "Super Ellipse", href: `${prefix}pages/tool-super-ellipse.html` },
+                        { title: "Super Shape", href: `${prefix}pages/tool-super-shape.html` },
+                        { title: "Text", href: `${prefix}pages/tool-text.html` },
+                        { title: "Tracking", href: `${prefix}pages/tool-tracking.html` },
                     ]},
-                    { title: "Dynamics (Динамика)", href: `${prefix}pages/menu-dynamics.html` },
-                    { title: "Window (Окно)", children: [
+                    { title: "Dynamics", href: `${prefix}pages/menu-dynamics.html` },
+                    { title: "Window", children: [
                         { title: "Window Menu Items", href: `${prefix}pages/window-menu-items.html` },
-                        { title: "About Window", href: `${prefix}pages/window-about.html` },
-                        { title: "Add Layers window", href: `${prefix}pages/window-add-layers.html` },
+                        
+                        { title: "Add Layers", href: `${prefix}pages/window-add-layers.html` },
                         { title: "Align Window", href: `${prefix}pages/window-align.html` },
                         { title: "Animation Utilities", href: `${prefix}pages/window-animation-utilities.html` },
                         { title: "Assets Window", href: `${prefix}pages/window-assets.html`, children: [
@@ -85,8 +85,9 @@
                             { title: "Audio Smart Folder", href: `${prefix}pages/window-assets-audio-smart-folder.html` },
                             { title: "Image Smart Folder", href: `${prefix}pages/window-assets-image-smart-folder.html` },
                             { title: "Referencing", href: `${prefix}pages/window-assets-referencing.html` },
-                            { title: "Audio Monitor", href: `${prefix}pages/window-assets-audio-monitor.html` },
+                            
                         ]},
+                        
                         { title: "Attribute Editor", href: `${prefix}pages/window-attribute-editor.html`, children: [
                             { title: "Main Window", href: `${prefix}pages/window-attribute-editor.html` },
                             { title: "Widgets", children: [
@@ -97,10 +98,13 @@
                                 { title: "Control Rows - Types", href: `${prefix}pages/window-attr-control-rows-types.html` },
                                 { title: "Control Rows - Interaction", href: `${prefix}pages/window-attr-control-rows-interaction.html` },
                             ]},
-                            { title: "Color window", children: [
+                            
+                        ]},
+                        
+                        { title: "Audio Monitor", href: `${prefix}pages/window-assets-audio-monitor.html` },
+                        { title: "Color window", children: [
                                 { title: "Main Window", href: `${prefix}pages/window-color-main.html` },
                                 { title: "Palettes", href: `${prefix}pages/window-color-palettes.html` },
-                            ]},
                         ]},
                         { title: "Control Centre", href: `${prefix}pages/window-control-centre.html` },
                         { title: "Dependency Graph", href: `${prefix}pages/window-dependency-graph.html` },
@@ -130,7 +134,7 @@
                             { title: "Time Markers", href: `${prefix}pages/window-time-markers.html` },
                         ]},
                         { title: "Shelf", href: `${prefix}pages/window-shelf.html` },
-                        { title: "Tag Window", href: `${prefix}pages/window-tag.html` },
+                        
                         { title: "Tool Settings", href: `${prefix}pages/window-tool-settings.html` },
                         { title: "Toolbar", href: `${prefix}pages/window-toolbar.html` },
                         { title: "Shortcut Manager", href: `${prefix}pages/window-shortcut-manager.html` },
@@ -143,11 +147,12 @@
                         ]},
                         { title: "General", children: [
                             { title: "Command Search", href: `${prefix}pages/window-general-command-search.html` },
+                            { title: "Tag Window", href: `${prefix}pages/window-tag.html` },
                             { title: "Workspaces", href: `${prefix}pages/window-general-workspaces.html` },
                         ]},
                     ]},
-                    { title: "Scripts (Скрипты)", href: `${prefix}pages/menu-scripts.html` },
-                    { title: "Help (Справка)", href: `${prefix}pages/menu-help.html` },
+                    { title: "Scripts", href: `${prefix}pages/menu-scripts.html` },
+                    { title: "Help", href: `${prefix}pages/menu-help.html` },
                 ]},
                 { title: "Общее", children: [
                     { title: "Управление цветом", href: `${prefix}pages/general-color-management.html` },
@@ -189,10 +194,6 @@
                     ]},
                     { title: "Cel Animation Shape", href: `${prefix}pages/cel-animation-shape.html` },
                     { title: "Component", href: `${prefix}pages/component.html` },
-                    { title: "Composition", children: [
-                        { title: "Composition", href: `${prefix}pages/composition.html` },
-                        { title: "Pre-Comp Overrides", href: `${prefix}pages/composition-precomp-overrides.html` },
-                    ]},
                     { title: "Connect Shape", href: `${prefix}pages/connect-shape.html` },
                     { title: "Convex Hull", href: `${prefix}pages/convex-hull.html` },
                     { title: "Corner Pin", href: `${prefix}pages/corner-pin.html` },
@@ -208,31 +209,39 @@
                         { title: "Collision Events", href: `${prefix}pages/forge-dynamics-collision-events.html` },
                         { title: "Fields", href: `${prefix}pages/forge-dynamics-fields.html` },
                     ]},
-                    { title: "Group", href: `${prefix}pages/group.html` },
-                    { title: "Image to Shapes", href: `${prefix}pages/image-to-shapes.html` },
-                    { title: "Isolines Shape", href: `${prefix}pages/isolines-shape.html` },
-                    { title: "JavaScript Shape", href: `${prefix}pages/javascript-shape.html` },
                     { title: "Layouts", children: [
                         { title: "Layouts", href: `${prefix}pages/layouts.html` },
                         { title: "Layout Group", href: `${prefix}pages/layouts-group.html` },
                         { title: "Grid Layout Group", href: `${prefix}pages/layouts-grid-group.html` },
                         { title: "Grid Layout Row", href: `${prefix}pages/layouts-grid-row.html` },
                     ]},
+                    { title: "Group", href: `${prefix}pages/group.html` },
+                    { title: "Image to Shapes", href: `${prefix}pages/image-to-shapes.html` },
+                    { title: "Isolines Shape", href: `${prefix}pages/isolines-shape.html` },
+                    { title: "JavaScript Shape", href: `${prefix}pages/javascript-shape.html` },
                     { title: "Merge", href: `${prefix}pages/merge.html` },
                     { title: "Mesh Shape", href: `${prefix}pages/mesh-shape.html` },
                     { title: "Outline", href: `${prefix}pages/outline.html` },
-                    { title: "Particle Shape", href: `${prefix}pages/particle-shape.html` },
                     { title: "Points to Path", href: `${prefix}pages/points-to-path.html` },
                     { title: "Quad Tree Shape", href: `${prefix}pages/quad-tree-shape.html` },
                     { title: "Ray", href: `${prefix}pages/ray.html` },
                     { title: "Rectangle Pattern", href: `${prefix}pages/rectangle-pattern.html` },
-                    { title: "SVG", href: `${prefix}pages/svg.html` },
                     { title: "Segment Path", href: `${prefix}pages/segment-path.html` },
                     { title: "Shortest Path", href: `${prefix}pages/shortest-path.html` },
                     { title: "Spacer", href: `${prefix}pages/spacer.html` },
-                    { title: "Sub-Mesh Bounding Box", href: `${prefix}pages/sub-mesh-bounding-box.html` },
+                    { title: "SVG", href: `${prefix}pages/svg.html` },
                     { title: "Text Shape", href: `${prefix}pages/text-shape.html` },
-                    { title: "Trails", href: `${prefix}pages/trails.html` },
+                    
+                    
+                    { title: "Composition", children: [
+                        { title: "Composition", href: `${prefix}pages/composition.html` },
+                        { title: "Pre-Comp Overrides", href: `${prefix}pages/composition-precomp-overrides.html` },
+                    ]},
+                    { title: "Экспериментальные", children: [
+                        { title: "Particle Shape", href: `${prefix}pages/particle-shape.html` },
+                        { title: "Sub-Mesh Bounding Box", href: `${prefix}pages/sub-mesh-bounding-box.html` },
+                        { title: "Trails", href: `${prefix}pages/trails.html` },
+                    ]},
                 ]},
 
                 // ===== ПОВЕДЕНИЯ =====
@@ -584,9 +593,10 @@
         {
             title: "Технические сведения",
             children: [
-                { title: "Logs", href: `${prefix}pages/logs.html` },
+                { title: "Список изменений", href: `${prefix}pages/release-notes.html` },
+                { title: "Логи", href: `${prefix}pages/logs.html` },
                 { title: "Математические выражения", href: `${prefix}pages/mathematical-expressions.html` },
-                { title: "Release Notes", href: `${prefix}pages/release-notes.html` },
+                
                 { title: "Настройки пользователя", href: `${prefix}pages/user-preferences.html` },
                 { title: "Сторонние плагины", href: `${prefix}pages/third-party-plugins.html` },
                 { title: "Создание скриптов", children: [
