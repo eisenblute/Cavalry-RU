@@ -179,14 +179,14 @@ main {
 
 .content {
     max-width: 1000px;
-    margin: 0 auto;   /* 👈 центрируем */
+    margin: 0 auto;   
 }
 
 
 .logo {
-    display: flex;              /* 👈 включаем flex */
-    align-items: center;        /* 👈 выравниваем по вертикальному центру */
-    gap: 0.5rem;                /* отступ между иконкой и текстом */
+    display: flex;             
+    align-items: center;        
+    gap: 0.5rem;                
     font-size: 1.4rem;
     font-weight: 700;
     color: #4FFD7A;
@@ -194,11 +194,12 @@ main {
     text-decoration: none;
 }
 
-.logo img {
-    display: block;             /* убираем baseline-отступ снизу */
-    width: 48px;
-    height: 48px;
-    flex-shrink: 0;             /* иконка не сжимается */
+.content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 6px;
+    margin: auto auto 2.2rem auto;
 }
 
 
@@ -603,19 +604,36 @@ ul.notes a::after {
     color: #fff;
 }
 
-/* Строка с иконкой и заголовком */
+.info-box .boxtitle { color: var(--accent); }
+.warn-box .boxtitle { color: var(--warning); }
+.note-box .boxtitle { color: var(--text-dim); }
+.tip-box  .boxtitle { color: var(--success); }
+
+/* ===== Заголовок инфо-блока ===== */
 .boxtitle {
     display: flex;
-    align-items: center;   
-    gap: 0.2rem;
+    align-items: center;      
+    gap: 0.5rem;              
+    margin-bottom: 0.5rem;
     font-weight: 600;
-    color: currentcolor;
-    margin-bottom: 0.4rem;
     font-size: 0.95rem;
+    line-height: 1.2;         
+    color: var(--text);
 }
 
-.icon {
-  margin-right: 0.5rem; /* Отступ со всех сторон */
+.boxtitle .icon {
+    display: block;           
+    flex-shrink: 0;           
+    width: 20px;
+    height: 20px;
+    margin: 0;                
+    padding: 0;
+}
+
+.boxtitle span {
+    display: inline-block;
+    line-height: 1;
+    color: inherit;
 }
 
 
