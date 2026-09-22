@@ -558,7 +558,7 @@ ul.notes a::after {
 .example-item:hover {
     transform: translateY(-3px);
     border-color: var(--accent);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.8);
     text-decoration: none;
 }
 
@@ -586,6 +586,82 @@ ul.notes a::after {
 .example-item:hover .example-title {
     color: var(--accent);
 }
+
+.example-item {
+    position: relative;         /* 👈 нужно для абсолютного позиционирования оверлея */
+    overflow: hidden;
+}
+
+
+.example-item {
+    position: relative;
+    overflow: hidden;
+    /* остальные стили — border, radius, transition и т.д. */
+}
+
+/* ===== Затемнение на всю картинку ===== */
+.example-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 200px;                      /* высота картинки */
+    background-color: rgba(0, 0, 0, 0.85);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* ===== Иконка по центру ===== */
+.example-item::after {
+    content: "";
+    position: absolute;
+    top: 100px;                         /* 200px / 2 — центр */
+    left: 50%;
+    width: 48px;
+    height: 48px;
+    transform: translate(-50%, -50%) scale(0.6);
+    background-image: url("imgs/download.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    opacity: 0;
+    transition: opacity 0.25s ease, transform 0.45s cubic-bezier(0.38, -0.55, 0.27, 1.65); 
+    
+    pointer-events: none;
+    z-index: 3;                         /* поверх затемнения */
+}
+
+/* ===== При наведении — затемняем и показываем иконку ===== */
+.example-item:hover::before {
+    opacity: 1;
+}
+
+.example-item:hover::after {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+@media (hover: none) {
+    .example-item:active::before {
+        opacity: 1;
+    }
+
+    .example-item:active::after {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+
+
+
+
+
+
+
 
 /* Планшет — 3 в ряд */
 @media (max-width: 1100px) {
