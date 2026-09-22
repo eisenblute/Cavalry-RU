@@ -1,4 +1,4 @@
-/* ===== Сброс и базовые стили ===== */
+/*------------------------- СБРОС И БАЗОВЫЕ СТИЛИ ----------------------------*/
 * {
     margin: 0;
     padding: 0;
@@ -6,15 +6,13 @@
 }
 
 
-
-
 :root {
-    --bg: #1f1f1f; /*0d0d0d;*/
+    --bg: #272727;/*0d0d0d;*/
     --bg-header: #1a1a1a;
-    --bg-sidebar: #111111;
-    --bg-card: #151515;
+    --bg-sidebar: #1a1a1a;
+    --bg-card: #222;
 
-    --border: #2a2a2a;
+    --border: #313131;
 
     --text: #e8e8e8;
     --text-muted: #a0a0a0;
@@ -54,16 +52,38 @@
     --code-text: #e0a0a0;
     --pre-bg: #1a1a1a;
 
-    /* 👇 Ширина сайдбара — меняется в одном месте */
+    /* Ширина сайдбара — меняется здесь */
     --sidebar-width: 320px;
     --header-height: 64px;
 }
 
 html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
 }
 
-/* ===== Базовая разметка ===== */
+/* Lenis рекомендует этот набор для корректной работы */
+html.lenis,
+html.lenis body {
+    height: auto;
+}
+
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+    overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+    pointer-events: none;
+}
+
+/*----------------------------- БАЗОВАЯ РАЗМЕТКА -----------------------------*/
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
                  "Helvetica Neue", Arial, sans-serif;
@@ -74,7 +94,7 @@ body {
     margin: 0;
 }
 
-/* ===== Шапка (во всю ширину сверху) ===== */
+/*----------------------------- ШАПКА (ВО ВСЮ ШИРИНУ СВЕРХУ) -----------------*/
 header {
     position: fixed;
     top: 0;
@@ -90,7 +110,7 @@ header {
     z-index: 200;
 }
 
-/* ===== Сайдбар — прижат к левому краю, на всю высоту ===== */
+/*--------------- САЙДБАР ПРИЖАТ К ЛЕВОМУ КРАЮ, НА ВСЮ ВЫСОТУ ----------------*/
 aside {
     position: fixed;
     top: var(--header-height);
@@ -169,7 +189,7 @@ aside::-webkit-scrollbar-thumb:hover {
 }
 
 
-/* ===== Контент — сдвинут вправо от сайдбара ===== */
+/*------------------- КОНТЕНТ СДВИНУТ ВПРАВО ОТ САЙДБАРА ---------------------*/
 main {
     margin-left: var(--sidebar-width);
     margin-top: var(--header-height);
@@ -234,16 +254,6 @@ main {
     font-style: italic;
     line-height: 1.4;
 }
-
-
-.pic {
-    display: block;
-    margin: auto auto 2.2rem auto;
-}
-
-
-
-
 
 .header-right {
     display: flex;
