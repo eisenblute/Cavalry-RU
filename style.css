@@ -9,7 +9,7 @@
 
 
 :root {
-    --bg: #0d0d0d;
+    --bg: #1f1f1f; /*0d0d0d;*/
     --bg-header: #1a1a1a;
     --bg-sidebar: #111111;
     --bg-card: #151515;
@@ -202,11 +202,46 @@ main {
     margin: auto auto 2.2rem auto;
 }
 
+.content img.inline-icon {
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    margin: 0 0.15rem;
+    max-width: none;
+    height: 20px;   /* фиксируем высоту */
+    border-radius: 0;
+}
+
+.content figure {
+    margin: 1.5rem 0;
+    text-align: center;
+}
+
+.content figure img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+}
+
+.content figcaption {
+    margin-top: 0.6rem;
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    font-style: italic;
+    line-height: 1.4;
+}
+
 
 .pic {
     display: block;
     margin: auto auto 2.2rem auto;
 }
+
+
 
 
 
@@ -636,6 +671,48 @@ ul.notes a::after {
     color: inherit;
 }
 
+/* ===== Списки внутри инфо-блоков ===== */
+.info-box ul,
+.warn-box ul,
+.note-box ul,
+.tip-box  ul,
+.info-box ol,
+.warn-box ol,
+.note-box ol,
+.tip-box  ol {
+    margin: 0.6rem 0 0.2rem 0;
+    padding-left: 1.4rem;      /* 👈 отступ слева для маркеров/номеров */
+    color: inherit;
+}
+
+/* Пункты списка */
+.info-box li,
+.warn-box li,
+.note-box li,
+.tip-box  li {
+    margin-bottom: 0.35rem;
+    padding-left: 0.2rem;
+    color: inherit;
+}
+
+.info-box li:last-child,
+.warn-box li:last-child,
+.note-box li:last-child,
+.tip-box  li:last-child {
+    margin-bottom: 0;
+}
+
+/* Маркеры списка — в цвет заголовка блока */
+.info-box ul li::marker { color: var(--accent); }
+.warn-box ul li::marker { color: var(--warning); }
+.note-box ul li::marker { color: var(--text-dim); }
+.tip-box  ul li::marker { color: var(--success); }
+
+/* Номера в нумерованном списке — тоже в цвет */
+.info-box ol li::marker { color: var(--accent); font-weight: 600; }
+.warn-box ol li::marker { color: var(--warning); font-weight: 600; }
+.note-box ol li::marker { color: var(--text-dim); font-weight: 600; }
+.tip-box  ol li::marker { color: var(--success); font-weight: 600; }
 
 
 /* ===== Таблицы ===== */
@@ -693,9 +770,11 @@ pre code {
 .page-nav {
     display: flex;
     justify-content: space-between;
-    margin-top: 3rem;
+    margin-top: 1rem;
     padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
     border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
     gap: 1rem;
 }
 

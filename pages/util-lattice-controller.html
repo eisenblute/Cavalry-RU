@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lattice Controller | Cavalry</title>
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header></header>
+
+<aside></aside>
+
+<main>
+    <div class="content">
+
+        <h1>Lattice Controller</h1>
+
+        <h2>Введение</h2>
+        <p>
+            Управляет положением, вращением и масштабом сразу нескольких
+            точек слоя <strong>Lattice</strong>.
+        </p>
+
+        <h2>Интерфейс</h2>
+
+        <p>
+            <strong>Strength</strong> — увеличивает или уменьшает влияние
+            контроллера на точки слоя Lattice. Это можно использовать для
+            смешивания точек между их исходным положением и смещениями,
+            заданными контроллером.
+        </p>
+
+        <p>
+            <strong>Pivot Offset</strong> — смещает контроллер относительно
+            его исходного положения.
+        </p>
+
+        <p>
+            <strong>Position</strong> — смещает точки слоя Lattice по осям X и Y.
+        </p>
+
+        <p>
+            <strong>Rotation</strong> — вращает точки слоя Lattice вокруг центра
+            контроллера.
+        </p>
+
+        <p>
+            <strong>Scale</strong> — масштабирует точки слоя Lattice относительно
+            центра контроллера.
+        </p>
+
+        <div class="warn-box">
+            <div class="boxtitle">
+                <img class="icon" src="../imgs/warn.svg" width="20" height="20" alt="">
+                <span>Внимание</span>
+            </div>
+            <p>
+                При ручном подключении <strong>Lattice Controller</strong> к <strong>Lattice</strong> убедитесь,
+                что перед созданием соединения вы выбрали некоторые точки слоя <strong>Lattice</strong>.
+                Рекомендуемый способ — использовать кнопку
+                <strong>Add Controller to Selection</strong> в интерфейсе <strong>Lattice</strong>.
+            </p>
+        </div>
+
+
+
+
+        <div class="note-box">
+            <div class="boxtitle">
+                <img class="icon" src="../imgs/note.svg" width="20" height="20" alt="">
+                <span>Пример</span>
+            </div>
+            <ol>
+            <li>Создайте <strong>Rectangle</strong>.</li>
+            <li>Установите <strong>Edge Divisions</strong> в <code>1,1</code>.</li>
+            <li>
+                Нажмите кнопку <img class="inline-icon" src="../imgs/addIcon.svg" width="20" height="20" alt=""> в атрибуте <strong>Deformers</strong> и выберите <strong>Lattice</strong>.
+            </li>
+            <li>
+                Выбрав слой <strong>Lattice</strong> и активный инструмент <strong>Select tool</strong>,
+                рамкой выделите точки слоя <strong>Lattice</strong> в правом верхнем квадранте
+                прямоугольника.
+            </li>
+            <li>
+                Нажмите <strong>Add Controller to Selection</strong>
+                в нижней части интерфейса <strong>Lattice</strong>.
+            </li>
+            <li>
+                С помощью <strong>Select tool</strong> переместите, поверните
+                или масштабируйте контроллер.
+            </li>
+        </ol>
+        </div>
+
+
+        
+
+        
+
+        <div class="page-nav">
+            <a href="util-lattice-deformer.html">◄ Lattice Deformer</a>
+            <a href="util-layer-seed.html">Layer Seed ►</a>
+        </div>
+
+    </div>
+</main>
+
+<footer></footer>
+
+<script src="../sidebar.js"></script>
+<script src="../header.js"></script>
+<script src="../footer.js"></script>
+<script src="../script.js"></script>
+</body>
+</html>

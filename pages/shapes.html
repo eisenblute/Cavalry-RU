@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shapes | Cavalry</title>
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header></header>
+
+<aside></aside>
+
+<main>
+    <div class="content">
+
+        <h1>Формы</h1>
+
+        <h2>Введение</h2>
+        <p>
+            <strong>Формы (Shapes)</strong> — это слои, которые можно рисовать в окне просмотра и
+            анимировать с помощью ключевых кадров и/или поведений.
+        </p>
+
+        <h2>Фигуры</h2>
+        <p>
+            <strong>Фигура (Shape)</strong> — это тип слоя, содержащий меш (Mesh), который можно
+            стилизовать с помощью заливки (Fill) и оводки (Stroke).
+        </p>
+        <p>
+            Примерами слоёв Shape в Cavalry являются
+            <strong>Basic Shape</strong>, <strong>Text Shape</strong>
+            и <strong>Duplicator</strong>.
+        </p>
+        <p>
+            <strong>Particle Shape</strong> — это исключение из этого
+            определения, которое созданно для эффективной обработки
+            большого количества частиц.
+        </p>
+
+        <p>Слой Shape может принимать две формы в Cavalry:</p>
+
+        <ul class="content-list">
+            <li>
+                <strong>Shape</strong> — Shape содержит настраиваемые
+                атрибуты, которые можно редактировать для изменения
+                её Path. Например, <strong>Rectangle</strong> включает
+                атрибут <strong>Size</strong> (Width/Height), а
+                <strong>Ellipse</strong> — атрибут <strong>Radius</strong>.
+            </li>
+            <li>
+                <strong>Editable Shape</strong> — Editable Shape — это
+                не процедурный Shape, содержащий Editable Path, который
+                можно редактировать с помощью инструмента
+                <strong>Edit Shape tool</strong>.
+            </li>
+        </ul>
+
+        <h2>Meshes</h2>
+        <p>Mesh — это контейнер, состоящий из следующих компонентов:</p>
+
+        <ul class="content-list">
+            <li>
+                <strong>Transform</strong> — Position, Rotation, Scale
+                и Pivot.
+            </li>
+            <li>
+                <strong>Fill</strong> — цвет, используемый для заливки
+                внутренней области замкнутого пути.
+            </li>
+            <li>
+                <strong>Stroke</strong> — цвет, используемый для контура
+                пути.
+            </li>
+            <li>
+                <strong>Path</strong> — геометрический примитив,
+                состоящий из линий и кривых. Path может содержать
+                несколько Contours — частей Path, не соединённых
+                друг с другом.
+            </li>
+            <li>
+                <strong>Child Meshes</strong> — дочерние элементы
+                родительского Mesh.
+            </li>
+        </ul>
+
+        <p>
+            Meshes могут содержать дочерние элементы, образуя иерархии.
+            Например, <strong>Text Shape</strong> содержит дочерний
+            элемент для каждой строки, затем слова и затем символа.
+            Поскольку каждый Mesh имеет собственные Transform, Fill
+            и Stroke, это позволяет анимировать текст на уровне
+            строки/слова/символа.
+        </p>
+
+        <p><strong>Text Shape</strong></p>
+        <ul class="content-list">
+            <li>Line</li>
+            <li>Word</li>
+            <li>Character</li>
+        </ul>
+
+        <p>
+            <strong>Sub-Mesh Deformer</strong> можно использовать для
+            редактирования каждого дочернего mesh, задавая глубину
+            в иерархии для воздействия. Эта идея также применима
+            к Fill, Stroke и Transform у Mesh.
+        </p>
+
+        <h3>Mesh Explorer</h3>
+        <p>
+            <strong>Mesh Explorer</strong> можно использовать для
+            отображения иерархии Shape и понимания того, какое
+            влияние окажут другие слои, способные управлять её
+            дочерними mesh.
+        </p>
+
+        <h2>Paths</h2>
+        <p>
+            Path — это геометрический примитив, состоящий из линий
+            и кривых. Внутри Path может быть несколько несоединённых
+            контуров, что делает возможным создание отверстий.
+            Линии и кривые, образующие Path, могут состоять из
+            различных типов bézier, прямых линий или специальных
+            маркеров, закрывающих контур или начинающих новый.
+        </p>
+        <p>
+            Path оптимизирован для отрисовки в реальном времени и
+            поэтому отличается от Editable Path тем, что его нельзя
+            редактировать, перемещая точки во Viewport. Path следует
+            преобразовать в Editable Shape через <strong>Shape Menu</strong>,
+            чтобы получить возможность прямого редактирования
+            и анимации Path.
+        </p>
+        <p>
+            Path и Editable Path выглядят по-разному во Viewport при
+            выборе инструментом <strong>Edit Shape tool</strong>.
+            Editable Path отображает более крупные точки, указывающие
+            на возможность их редактирования.
+        </p>
+
+        <figure>
+            <img src="../imgs/shapes-path-vs-editable-path.png" alt="Path слева и Editable Path справа при выборе инструментом Edit Shape tool">
+            <figcaption>Path (слева) и Editable Path (справа) при выборе инструментом <strong>Edit Shape tool</strong>.</figcaption>
+        </figure>
+
+        <h3>Editable Paths</h3>
+        <p>
+            Editable Path — часть особого типа слоя Shape, называемого
+            Editable Shape. Это геометрический примитив, построенный
+            с использованием Editable Points, определяющих форму пути.
+            Форма Path описывается линиями и кривыми с контрольными
+            точками (примитив, ориентированный на кривые), тогда как
+            форма Editable Path описывается точками с ручками
+            (примитив, ориентированный на точки). Это различие делает
+            Editable Paths более удобными в работе, поскольку
+            художники обычно мыслят путями как точками с bézier-ручками,
+            а не кривыми.
+        </p>
+        <p>
+            Назначение Editable Path — сделать рисование и редактирование
+            путей во Viewport простым и интуитивным с помощью инструмента
+            <strong>Edit Shape tool</strong>.
+        </p>
+        <p>
+            Поскольку Editable Path — это абстрактное представление
+            фактического оптимизированного Path, отрисовываемого во
+            Viewport, количество видимых точек Path может отличаться
+            от фактического количества точек. Рассмотрим пример
+            простого треугольника:
+        </p>
+
+        <figure>
+            <img src="../imgs/shapes-triangle-points.png" alt="Треугольник с 3 точками построен из 4 точек">
+            <figcaption>
+                Треугольник с 3 точками на самом деле построен из
+                4 точек: первая и последняя расположены в одном месте.
+            </figcaption>
+        </figure>
+
+        <p>
+            Shape с 3 видимыми точками, включающий также bézier-точки,
+            фактически построен из 8 точек.
+        </p>
+
+        <figure>
+            <img src="../imgs/shapes-triangle-bezier.png" alt="Shape с 3 видимыми точками и bézier построен из 8 точек">
+        </figure>
+
+        <p>
+            Это важно понимать при использовании <strong>Mesh Explorer</strong>
+            для проверки Point Count у Shape.
+        </p>
+
+        <h3>Editable Points</h3>
+        <p>
+            Editable Points определяют форму Editable Path через
+            различные позиции и настройки:
+        </p>
+
+        <ul class="content-list">
+            <li>Position</li>
+            <li>In Handle Position</li>
+            <li>Out Handle Position</li>
+            <li>Weight Locked</li>
+            <li>Gradient Locked</li>
+        </ul>
+
+        <p>
+            Когда и <strong>In Handle</strong>, и <strong>Out Handle</strong>
+            не заданы, точка обрабатывается как Corner Point.
+        </p>
+
+
+<div class="warn-box">
+            <div class="boxtitle">
+                <img class="icon" src="../imgs/warn.svg" width="20" height="20" alt="">
+                <span>Не стоит путать Point Count и pointId</span>
+            </div>
+        <p>
+            <strong>pointId</strong> может использоваться другими
+            слоями (Duplicator, Constraints и т.д.) для размещения
+            Shapes в точках других Shapes. Первый pointId —
+            <code>pointId0</code> — увеличивается в направлении Path
+            на основе точек, видимых во Viewport; ручки игнорируются.
+        </p>
+        </div>
+
+        <div class="page-nav">
+            <a href="shapes-background.html">◄ Background Shape</a>
+            <a href="shapes-common-attributes.html">Common Attributes (Shapes) ►</a>
+        </div>
+
+    </div>
+</main>
+
+<footer></footer>
+
+<script src="../sidebar.js"></script>
+<script src="../header.js"></script>
+<script src="../footer.js"></script>
+<script src="../script.js"></script>
+</body>
+</html>

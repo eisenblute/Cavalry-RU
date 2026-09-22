@@ -15,9 +15,10 @@
         //  ДОБРО ПОЖАЛОВАТЬ
         // ============================================================
         {
-            title: "Добро пожаловать",
+            title: "Документация",
             href: `${prefix}index.html`,
             children: [
+                {title: "О программе", href: `${prefix}pages/introduction.html`},
                 { title: "Начало работы", children: [
                     { title: "Системные требования", href: `${prefix}pages/requirements.html` },
                     { title: "Скачивание и установка", href: `${prefix}pages/installation.html` },
