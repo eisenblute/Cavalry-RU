@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Композиция | Cavalry</title>
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header></header>
+
+<aside data-lenis-prevent></aside>
+
+<nav class="page-toc">
+    
+    <ul>
+        <li><a class="toc-level-2" href="#Введение">Введение</a></li>
+        <li><a class="toc-level-2" href="#Заготовки композиции">Заготовки композиции</a></li>
+        <li><a class="toc-level-2" href="#Настройки композиции">Настройки композиции</a></li>
+        <li><a class="toc-level-2" href="#Прекомпоз">Прекомпоз</a></li>
+    </ul>
+</nav>
+
+<main>
+    <div class="content">
+        <h1>Композиция</h1>
+
+        <h2 id="Введение">Введение</h2>
+        <p><strong>Композиция</strong> (composition) - это сцена, в которой размещаются все слои.</p>
+
+        <p>Чтобы создать композицию, можно выполнить одно из действий:</p>
+
+        <ul class="content-list">
+            <li>
+                Нажать кнопку
+                <img class="inline-icon" src="../imgs/comp.svg" width="20" height="20" alt="">
+                в нижней части <strong>Окна ассетов</strong>.
+            </li>
+            <li>
+                Перетащить русурс в <strong>Окне ассетов</strong>
+                на кнопку
+                <img class="inline-icon" src="../imgs/comp.svg" width="20" height="20" alt="">.
+            </li>
+            <li>
+                В главном меню выбрать <code>Composition - New Composition</code>
+                или нажать <code>CTRL</code>+<code>SHIFT</code>+<code>N</code>.
+            </li>
+        </ul>
+
+        <p>
+            Чтобы открыть композицию, дважды щёлкните по ней
+            в <strong>Окне ассетов</strong> и она появится в виде новой вкладке <strong>Окна сцены</strong>.
+        </p>
+        
+        <p>
+            Можно открыть несколько композиций одновременно, но только
+            одна может быть установлена как <strong>активная</strong>.
+            Используйте вкладки в верхней части <strong>Окна сцены</strong>,
+            чтобы переключаться между открытыми композициями.
+        </p>
+
+        <h2 id="Заготовки композиции">Заготовки композиции</h2>
+        <p>
+            Используйте <strong>заготовки композиции</strong> (composition presets), чтобы задать пользовательские значения по умолчанию для новой композиции (разрешение, частота кадров и.т.д.).
+        </p>
+
+
+<h2 id="Настройки композиции">Настройки композиции</h2>
+        
+        <p>Общие настройки композиции отображаются, если перетащить композицию из
+        <strong>Окна ассетов</strong> в <strong>Редактор трибутов</strong>:</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Атрибут</th>
+                    <th>Описание</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Resolution</strong></td>
+                    <td>
+                        Задаёт ширину и высоту композиции в пикселях.
+                        Используйте выпадающий список, чтобы выбрать
+                        одну из распространённых заготовок.
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Frame Range</strong></td>
+                    <td>
+                        Задаёт номера кадров для начала и конца композиции.
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Playback Range</strong></td>
+                    <td>
+                        Задаёт начальный и конечный кадры, используемые
+                        при воспроизведении. Это значение также можно
+                        установить с помощью «закладок» (полос с зелёными
+                        концами) в верхней части <strong>Временной шкалы</strong>.
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Time</strong></td>
+                    <td>
+                        Показывает текущий кадр. Не принимает ввода,
+                        но может быть подключён к другим атрибутам —
+                        хотя <strong>Frame</strong> часто является лучшим
+                        решением в этом случае.
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Frame Rate</strong></td>
+                    <td>
+                        Задаёт количество кадров в секунду, с которым
+                        будет воспроизводиться композиция.
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Background</strong></td>
+                    <td>
+                        Задаёт цвет фона композиции с помощью значений
+                        HEX или RGB (примечание: анимировать можно только
+                        значения RGB).
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Playback Step</strong></td>
+                    <td>Воспроизводить каждый n-й кадр.</td>
+                </tr>
+                <tr>
+                    <td><strong>Motion Blur</strong></td>
+                    <td>Включает/выключает размытие в движении.</td>
+                </tr>
+                <tr>
+                    <td><strong>Shutter Angle</strong></td>
+                    <td>
+                        Задаёт угол затвора. Значение по умолчанию
+                        <code>180°</code> даёт «плёночный вид».
+                        То есть 50% от частоты кадров.
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Motion Blur Centre</strong></td>
+                    <td>
+                        Определяет, направлено ли размытие назад или
+                        вперёд от текущего кадра. Значение по умолчанию
+                        <code>0</code> центрирует его на кадре (размытие
+                        будет равномерным в обоих направлениях движения).
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Blur Align</strong></td>
+                    <td>
+                        Корректирует положение, из которого берутся
+                        сэмплы размытия движения, относительно
+                        <strong>Motion Blur Centre</strong>. Это можно использовать
+                         для контроля за уровня размытия в начале
+                        или конце анимации. Например, установка
+                        <strong>Blur Align</strong> в <code>-100</code>
+                        приведёт к отсутствию размытия, если форма
+                        статична на предыдущем кадре.
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Motion Blur Samples</strong></td>
+                    <td>
+                        Определяет, сколько раз берётся сэмпл размытия
+                        движения. Большее число даёт более плавное
+                        размытие, но также снижает производительность.
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Linear Gamma</strong></td>
+                    <td>Включает линейное цветовое пространство.</td>
+                </tr>
+                <tr>
+                    <td><strong>Keyframe Layer</strong></td>
+                    <td>Текущий активный Keyframe Layer.</td>
+                </tr>
+                <tr>
+                    <td><strong>Referenceable</strong></td>
+                    <td>
+                        Если отмечено, композиция будет отображаться
+                        в <strong>Окне ассетов</strong>, когда сцена
+                        импортируется как <strong>Ссылка</strong>.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+
+        <h2 id="Прекомпоз">Прекомпоз</h2>
+        <p>
+            <strong>Прекомпоз</strong> (pre-comp) - это композиция, которая используется в качестве слоя
+            в другой композиции. Чтобы отобразить свойства прекомпоза, перетащите этот слой
+            из <strong>Окна сцены</strong> в <strong>Редактор атрибутов</strong>:
+        </p>
+
+        <table>
+    <thead>
+        <tr>
+            <th>Атрибут</th>
+            <th>Описание</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Position</strong></td>
+            <td>
+                Задаёт положение композиции. <code>0,0</code> — центр.
+            </td>
+        </tr>
+        <tr>
+            <td><strong>Rotation</strong></td>
+            <td>Задаёт поворот композиции (в градусах).</td>
+        </tr>
+        <tr>
+            <td><strong>Scale</strong></td>
+            <td>Задаёт масштаб композиции.</td>
+        </tr>
+        <tr>
+            <td><strong>Pivot</strong></td>
+            <td>
+                Определяет точку привязки композиции. Полезно
+                при анимации поворота и масштаба.
+            </td>
+        </tr>
+        <tr>
+            <td><strong>Opacity</strong></td>
+            <td>Задаёт прозрачность композиции.</td>
+        </tr>
+        <tr>
+            <td><strong>Blend Mode</strong></td>
+            <td>Задаёт режим смешивания.</td>
+        </tr>
+        <tr>
+            <td><strong>Deformers</strong></td>
+            <td>Список подключённых деформаторов.</td>
+        </tr>
+        <tr>
+            <td><strong>Filters</strong></td>
+            <td>Список подключённых фильтров.</td>
+        </tr>
+        <tr>
+            <td><strong>Motion Blur</strong></td>
+            <td>Включает размытие в движении.</td>
+        </tr>
+        <tr>
+            <td><strong>Preserve Frame Rate</strong></td>
+            <td>
+                Если композиция используется как прекомпоз, включение
+                этой опции сохранит её частоту кадров. Например, если
+                композиция с 12 кадр./сек. является прекомпозом внутри композиции
+                с 24 кадр./сек., включение <strong>Preserve Frame Rate</strong>
+                гарантирует, что прекомпоз будет воспроизводиться
+                с частотой 12 кадр./сек. Если опция выключена, Cavalry
+                выполнит повторную интерполяцию частоты кадров,
+                чтобы соответствовать частоте 24 кадр./сек. родительской
+                композиции.
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        
+
+
+
+        <h2>Pre-Comp</h2>
+        <p>
+            Composition, используемый как слой внутри другого Composition,
+            также называется <strong>Pre-Comp</strong>. Несколько Pre-Comps
+            можно добавить в другой Composition как способ создания копий
+            с единым «источником истины» — любые изменения, внесённые
+            в оригинальный Composition, будут распространяться на все
+            его Pre-Comps.
+        </p>
+
+        <h3>Создание Pre-Comp</h3>
+        <p>Чтобы создать Pre-Comp, выполните одно из действий:</p>
+
+        <ul class="content-list">
+            <li>
+                Перетащите Composition из <strong>Assets Window</strong>
+                во <strong>Viewport</strong> или <strong>Scene Tree</strong>
+                в другой Composition.
+            </li>
+            <li>
+                Выберите несколько слоёв внутри существующего Composition
+                и затем:
+                <ul>
+                    <li>
+                        Правый клик &gt; <strong>Pre-Compose Selection</strong>.
+                    </li>
+                    <li>
+                        Или используйте меню
+                        <strong>Composition &gt; Pre-Compose</strong>.
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <p>
+            См. <a href="composition-precomp-overrides.html">Pre-Comp Overrides</a>
+            — там описан способ использования Compositions для создания
+            редактируемых «шаблонов».
+        </p>
+
+        <p>
+            Если Pre-Comp уже существует в Composition, можно заменить
+            его ссылку на другой Composition из <strong>Assets Window</strong>.
+            Для этого выполните одно из действий:
+        </p>
+
+        <ul class="content-list">
+            <li>
+                Удерживая <strong>Option/Alt</strong>, перетащите Composition
+                из <strong>Assets Window</strong> на строку Pre-Comp
+                в <strong>Scene Window</strong>.
+            </li>
+            <li>
+                Выберите несколько Pre-Comps в <strong>Scene Window</strong>
+                и затем, удерживая <strong>Option/Alt</strong>, перетащите
+                Composition из <strong>Assets Window</strong>
+                в <strong>Scene Window</strong>.
+            </li>
+        </ul>
+
+        <h3>Установка Pre-Comp как активного Composition</h3>
+        <p>
+            Нажатие кнопки <strong>Open</strong> или
+            <strong>Option/Alt + Cmd/Ctrl + двойной щелчок</strong>
+            по строке Composition Layer в <strong>Scene Window</strong>
+            откроет этот Composition (сделав его активным).
+        </p>
+
+        <div class="note-box">
+            <div class="boxtitle">
+                <img class="icon" src="../imgs/note.svg" width="20" height="20" alt="">
+                <span>Примечание</span>
+            </div>
+            <p>
+                Единственный способ создать новый Composition —
+                через <strong>Assets Window</strong> или меню.
+                Его нельзя создать через <strong>Add Layers Window</strong>.
+            </p>
+        </div>
+
+        <div class="page-nav">
+            <a href="layers.html">◄ Слои</a>
+            <a href="composition-precomp-overrides.html">Pre-Comp Overrides ►</a>
+        </div>
+
+    </div>
+</main>
+
+<footer></footer>
+
+<script src="../lenis.min.js"></script>
+<script src="../sidebar.js"></script>
+<script src="../header.js"></script>
+<script src="../footer.js"></script>
+<script src="../script.js"></script>
+<script src="../smooth-scroll.js"></script> 
+</body>
+</html>

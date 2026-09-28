@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Общая схема работы | Cavalry</title>
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header></header>
+
+<aside data-lenis-prevent></aside>
+
+<main>
+    <div class="content">
+        <h1>Общая схема работы</h1>
+
+        <h2>Как работает Cavalry</h2>
+        <p>Общий принцип работы программы следующий:</p>
+        
+        <ul class="content-list">
+            <li>В <strong>проект</strong> импортируются внешние файлы в качестве <strong>ассетов</strong>, то есть ресурсов.</li>
+            <li>Автоматически создаётся специальный контейнер называемый <strong>композицией</strong>.</li>
+            <li>Внутри композиции на основе <strong>типа</strong> создаются <strong>слои</strong>, которые иерархически размещаются в <strong>древе сцены</strong>.</li>
+            <li>Каждый слой имеет встроенные <strong>атрибуты</strong> со своими <strong>значениями</strong>, которые могут соединяться между собой и управлять друг другом.</li>
+            <li>Любая композиция может стать специальным ассетом, который называется <strong>прекомпоз</strong> и затем встраиваться в другие композиции как обычный слой.</li>
+        </ul>
+        
+        <figure>
+            <img src="../imgs/principle.png">
+            <figcaption>Общая схема работы Cavalry</figcaption>
+        </figure>
+
+        <p>Далее о каждом элементе подробнее. Начнём с проектов и ассетов.</p>
+
+        
+
+        <div class="page-nav">
+            <a href="example-files.html">◄ Файлы примеров</a>
+            <a href="info-assets-and-projects.html">Проекты и ассеты ►</a>
+        </div>
+
+    </div>
+</main>
+
+<footer></footer>
+
+<script src="../lenis.min.js"></script>
+<script src="../sidebar.js"></script>
+<script src="../header.js"></script>
+<script src="../footer.js"></script>
+<script src="../script.js"></script>
+<script src="../smooth-scroll.js"></script> 
+</body>
+</html>

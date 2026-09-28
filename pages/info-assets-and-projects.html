@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Проекты и ассеты | Cavalry</title>
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header></header>
+
+<aside data-lenis-prevent></aside>
+
+<nav class="page-toc">
+    <ul>
+        <li><a class="toc-level-2" href="#Формат проекта">Формат проекта</a></li>
+        <li><a class="toc-level-2" href="#Настройки проекта">Настройки проекта</a></li>
+        <li><a class="toc-level-2" href="#Ассеты">Ассеты</a></li>
+        <li><a class="toc-level-2" href="#Импортируемые форматы">Импортируемые форматы</a></li>
+        <li><a class="toc-level-2" href="#Умные папки">Умные папки</a></li>
+    </ul>
+</nav>
+
+<main>
+    <div class="content">
+        <h1>Проекты</h1>
+
+        <h2 id="Формат проекта">Формат проекта</h2>
+        <p><strong>Проект</strong> Cavalry - это файл с расширением <code>.cv</code>, который является обычным JSON-файлом. Его можно открыть в любом текстовом редакторе и увидеть то, как устроена ваша сцена на уровне данных.
+        </p>
+
+        <h2 id="Настройки проекта">Настройки проекта</h2>
+        <p>
+            Изображения, шрифты и другие ресурсы никогда не «зашиваются» в файл .cv, а хранятся отдельно.
+        </p>
+        <p>
+            Чтобы как-то упорядочить их хранение, в Cavalry используются <strong>настройки проекта</strong> (project settings) - 
+            специальная система, которая создаёт папки и затем ссылается на них.  
+            Это особенно важно при командной работе, когда над проектом трудятся несколько человек.
+        </p>
+        
+        <p><strong>Что это даёт:</strong></p>
+
+        <ul class="content-list">
+            <li>
+                Все пути к файлам становятся относительными
+                <code>@project/Assets/...</code>
+            </li>
+            <li>
+                При передаче проекта на другой ПК ссылки на ассеты
+                не «ломаются».
+            </li>
+            <li>
+                Проводник автоматически открывается в нужной папке
+                (<strong>Assets</strong>, <strong>Scenes</strong>, <strong>Renders</strong>).
+            </li>
+        </ul>
+
+        <div class="note-box">
+            <div class="boxtitle">
+                <img class="icon" src="../imgs/note.svg" width="20" height="20" alt="">
+                <span>Создание настроек проекта</span>
+            </div>
+            <p>Для создания настроек нужно в нижнем левом углу окна ассетов нажать на выпадающий список и выбрать <code>Create</code>:</p>
+            
+            <figure>
+                <img src="../imgs/create-project-settings.png">
+                <figcaption>Меню создания и загрузки настроек проекта</figcaption>
+            </figure>
+                
+            <p>После этого в открывшемся Проводнике нужно выбрать (или создать новую) папку вашего проекта и нажать <code>Choose</code>,
+            в результате чего будет создана структура необходимых папок:</p>
+            
+            <figure>
+                <img src="../imgs/project-folders.png">
+                <figcaption>Созданные папки и файл настроек проекта</figcaption>
+            </figure>
+            
+            <p>Теперь все сторонние ресурсы вы <strong>должны помещать внутрь папки Assets</strong> и впоследствии, при передачи папки проекта на другой ПК
+            или по сети, ваши ассеты будут видимы для Cavalry!</p>
+            
+        </div>
+        
+        
+
+        <h1 id="Ассеты">Ассеты</h1>
+
+        <p>
+            В Cavalry <strong>ассеты</strong> (assets) — это внешние ресурсы, которые вы
+            импортируете в проект и используете внутри сцен: изображения,
+            видео, шрифты, аудио, SVG, таблицы данных и даже другие
+            сцены Cavalry.
+        </p>
+
+        <p>
+            Все ассеты отображаются в специальном окне <strong>Assets Window</strong>,
+            которое служит центром управления ресурсами проекта:
+        </p>
+
+        <figure>
+            <img src="../imgs/assets-windows.png">
+            <figcaption>Окно ассетов (Asset Window)</figcaption>
+        </figure>
+        
+        
+
+        <h2 id="Импортируемые форматы">Импортируемые форматы</h2>
+        <p>
+            Cavalry поддерживает широкий спектр форматов файлов для импорта:
+        </p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Категория</th>
+                    <th>Поддерживаемые форматы</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Изображения</td>
+                    <td>
+                        <code>.png</code>, <code>.jpg</code>, <code>.bmp</code>,
+                        <code>.ico</code>, <code>.webp</code>, <code>.exr</code>[только 1 канал], <code>.psd</code>[без слоёв]
+                    </td>
+                </tr>
+                <tr>
+                    <td>Видео / Анимация</td>
+                    <td>
+                        <code>.mp4</code>, <code>.mov</code>, <code>.webm</code>, <code>.apng</code>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>Аудио</td>
+                    <td>
+                        <code>.mp3</code>, <code>.wav</code>, <code>.aac</code>,
+                        <code>.aif</code>, <code>.aiff</code>, <code>.caf</code>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Шрифты</td>
+                    <td><code>.ttf</code>, <code>.otf</code>, <code>.otc</code></td>
+                </tr>
+                <tr>
+                    <td>Векторная графика</td>
+                    <td><code>.svg</code></td>
+                </tr>
+                <tr>
+                    <td>Данные</td>
+                    <td>
+                        <code>.csv</code>, <code>.xlsx</code>, <code>.json</code>,
+                        <code>.txt</code>, <code>.gsheet</code>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Сцены Cavalry</td>
+                    <td>
+                        <code>.cv</code>[как <strong>Reference</strong>],
+                        <code>.cvc</code>[как <strong>Scene</strong>]
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="info-box">
+            <div class="boxtitle">
+                <img class="icon" src="../imgs/info.svg" width="20" height="20" alt="">
+                <span>Информация</span>
+            </div>
+            <p>
+                При импорте видео со звуком аудиодорожка добавляется как
+                дочерний элемент видео, и её можно использовать отдельно.
+            </p>
+        </div>
+
+        <h2 id="Умные папки">Умные папки</h2>
+        <p>
+            <strong>Умные папки</strong> (smart folders) — это способ импортировать целую
+            папку с файлами и управлять ими через индексы, что критически
+            важно для процедурной работы.
+        </p>
+
+        <p>
+            <strong>Image Smart Folder</strong> позволяет ссылаться на файлы изображений.
+        </p>
+
+        <p>
+            <strong>Audio Smart Folder</strong> позволяет ссылаться на звуковые файлы.
+        </p>
+
+        <div class="warn-box">
+            <div class="boxtitle">
+                <img class="icon" src="../imgs/warn.svg" width="20" height="20" alt="">
+                <span>Ограничение</span>
+            </div>
+            <p>
+                Умные папки поддерживают максимальную глубину
+                в <strong>5 директорий</strong>.
+            </p>
+        </div>
+
+
+
+        <div class="page-nav">
+            <a href="main-principle.html">◄ Общая схема работы</a>
+            <a href="info-compositions.html">Композиции ►</a>
+        </div>
+
+    </div>
+</main>
+
+<footer></footer>
+
+<script src="../lenis.min.js"></script>
+<script src="../sidebar.js"></script>
+<script src="../header.js"></script>
+<script src="../footer.js"></script>
+<script src="../script.js"></script>
+<script src="../smooth-scroll.js"></script> 
+</body>
+</html>

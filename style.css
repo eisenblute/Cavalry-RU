@@ -1,11 +1,15 @@
-/*------------------------- СБРОС И БАЗОВЫЕ СТИЛИ ----------------------------*/
+/*------------------------------------------------------------------------------  
+СБРОС И БАЗОВЫЕ СТИЛИ
+------------------------------------------------------------------------------*/
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-
+/*------------------------------------------------------------------------------  
+Глобальные цвета и размеры
+------------------------------------------------------------------------------*/
 :root {
     --bg: #272727;/*0d0d0d;*/
     --bg-header: #1a1a1a;
@@ -52,16 +56,21 @@
     --code-text: #e0a0a0;
     --pre-bg: #1a1a1a;
 
-    /* Ширина сайдбара — меняется здесь */
+    /*------------------------------------------------------------------------------  
+    Размеры шапки, боковой панели, панели страничного меню
+    ------------------------------------------------------------------------------*/
     --sidebar-width: 320px;
     --header-height: 64px;
+    --toc-height: 48px; 
 }
 
 html {
     scroll-behavior: auto;
 }
 
-/* Lenis рекомендует этот набор для корректной работы */
+/*------------------------------------------------------------------------------  
+Плавная прокрутка через Lenis
+------------------------------------------------------------------------------*/
 html.lenis,
 html.lenis body {
     height: auto;
@@ -83,7 +92,10 @@ html.lenis body {
     pointer-events: none;
 }
 
-/*----------------------------- БАЗОВАЯ РАЗМЕТКА -----------------------------*/
+
+/*------------------------------------------------------------------------------  
+Базовая разметка
+------------------------------------------------------------------------------*/
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
                  "Helvetica Neue", Arial, sans-serif;
@@ -94,7 +106,9 @@ body {
     margin: 0;
 }
 
-/*----------------------------- ШАПКА (ВО ВСЮ ШИРИНУ СВЕРХУ) -----------------*/
+/*------------------------------------------------------------------------------  
+Шапка (во всю ширину сверху)
+------------------------------------------------------------------------------*/
 header {
     position: fixed;
     top: 0;
@@ -110,7 +124,9 @@ header {
     z-index: 200;
 }
 
-/*--------------- САЙДБАР ПРИЖАТ К ЛЕВОМУ КРАЮ, НА ВСЮ ВЫСОТУ ----------------*/
+/*------------------------------------------------------------------------------  
+Боковая панель (на всю высоту)
+------------------------------------------------------------------------------*/
 aside {
     position: fixed;
     top: var(--header-height);
@@ -144,74 +160,31 @@ aside::-webkit-scrollbar-thumb:hover {
     background: #3a3a3a;
 }
 
-
-/* Заголовок группы с кликабельной ссылкой внутри */
-.nav-group-title.has-link {
-    padding: 0;                 /* отступы переносим на ссылку */
-    gap: 0;
-}
-
-.nav-group-title.has-link .nav-group-link {
-    flex: 1;
-    color: inherit;
-    text-decoration: none;
-    padding: 0.5rem 0.6rem;
-    border-radius: 4px 0 0 4px;
-    transition: color 0.15s, background-color 0.15s;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.nav-group-title.has-link .nav-group-link:hover {
-    color: #fff;
-    background-color: rgba(255, 255, 255, 0.04);
-    text-decoration: none;
-}
-
-/* Стрелка — отдельная зона клика */
-.nav-group-title.has-link .arrow {
-    padding: 0.5rem 0.7rem;
-    border-radius: 0 4px 4px 0;
-    cursor: pointer;
-    transition: background-color 0.15s;
-}
-
-.nav-group-title.has-link .arrow:hover {
-    background-color: rgba(110, 168, 254, 0.12);
-}
-
-/* Активная ссылка в заголовке группы */
-.nav-group-title.has-link .nav-group-link.active {
-    color: #fff;
-    background-color: rgba(110, 168, 254, 0.15);
-    font-weight: 500;
-}
-
-
-/*------------------- КОНТЕНТ СДВИНУТ ВПРАВО ОТ САЙДБАРА ---------------------*/
+/*------------------------------------------------------------------------------  
+Главный контент
+------------------------------------------------------------------------------*/
 main {
+    flex: 1;
+    min-width: 0;
     margin-left: var(--sidebar-width);
-    margin-top: var(--header-height);
+    margin-top: calc(var(--header-height) + var(--toc-height, 0px)); 
     padding: 2.5rem 3rem 4rem;
     min-height: calc(100vh - var(--header-height));
+}
+
+main a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+main a:hover {
+    text-decoration: underline;
 }
 
 .content {
     max-width: 1000px;
     margin: 0 auto;   
-}
-
-
-.logo {
-    display: flex;             
-    align-items: center;        
-    gap: 0.5rem;                
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #4FFD7A;
-    letter-spacing: 0.5px;
-    text-decoration: none;
 }
 
 .content img {
@@ -255,38 +228,40 @@ main {
     line-height: 1.4;
 }
 
+.content ul,
+ul.content-list {
+    list-style: disc;              
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+    color: var(--text-muted);
+}
+
+ul.content-list > li::before {
+    content: none;
+    display: none;
+}
+
+.content ul li,
+ul.content-list li {
+    margin-bottom: 0.4rem;
+    padding-left: 0.2rem;
+}
+
+.logo {
+    display: flex;             
+    align-items: center;        
+    gap: 0.5rem;                
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #4FFD7A;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+}
+
 .header-right {
     display: flex;
     align-items: center;
     gap: 1.5rem;
-}
-
-.search-box {
-    background-color: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 0.4rem 0.8rem;
-    color: var(--text);
-    font-size: 0.9rem;
-    width: 200px;
-    outline: none;
-    transition: border-color 0.2s;
-}
-
-.search-box:focus {
-    border-color: var(--accent);
-}
-
-nav.top-nav a {
-    color: var(--text-muted);
-    text-decoration: none;
-    margin-left: 1.5rem;
-    font-size: 0.95rem;
-    transition: color 0.2s;
-}
-
-nav.top-nav a:hover {
-    color: #fff;
 }
 
 .burger {
@@ -298,25 +273,14 @@ nav.top-nav a:hover {
     cursor: pointer;
 }
 
-/* ===== Основной контейнер ===== */
-.container {
-    display: flex;
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 2rem;
-    gap: 3rem;
-    width: 100%;
-    flex: 1;
-}
 
-
-
-/* ===== Группа ===== */
+/*------------------------------------------------------------------------------  
+Боковая панель
+------------------------------------------------------------------------------*/
 .nav-group {
     margin-bottom: 0.2rem;
 }
 
-/* ===== Заголовок группы (НЕ кнопка, просто текст со стрелкой) ===== */
 .nav-group-title {
     display: flex;
     align-items: center;
@@ -330,7 +294,7 @@ nav.top-nav a:hover {
     color: var(--text-muted);
     font-family: inherit;
     font-size: 0.82rem;
-    font-weight: 600;
+    font-weight: 500;
     letter-spacing: 0.3px;
     text-transform: none;
     cursor: pointer;
@@ -349,7 +313,6 @@ nav.top-nav a:hover {
     color: #fff;
 }
 
-/* Стрелка */
 .nav-group-title .arrow {
     font-size: 0.6rem;
     opacity: 0.55;
@@ -362,9 +325,8 @@ nav.top-nav a:hover {
     transform: rotate(-90deg);
 }
 
-/* ===== Содержимое группы ===== */
 .nav-group-content {
-    max-height: 2000px;
+    max-height: 10000px;
     overflow: hidden;
     transition: max-height 0.3s ease, opacity 0.2s ease;
     opacity: 1;
@@ -405,11 +367,10 @@ nav.top-nav a:hover {
 
 .nav-group-content a.active {
     color: #fff;
-    background-color: rgba(110, 168, 254, 0.15);
+    background-color: rgba(110, 168, 254, 0.25);
     font-weight: 500;
 }
 
-/* ===== Вложенные группы (2+ уровень) ===== */
 .nav-group-content .nav-group {
     margin: 0;
 }
@@ -417,7 +378,7 @@ nav.top-nav a:hover {
 .nav-group-content .nav-group-title {
     padding-left: 0.6rem;
     font-size: 0.85rem;
-    font-weight: 500;
+    font-weight: 100;
     color: var(--text-muted);
 }
 
@@ -431,7 +392,6 @@ nav.top-nav a:hover {
     border-left: 1px solid var(--border);
 }
 
-/* Активный заголовок группы (если это ссылка) */
 a.nav-group-title.active {
     color: #fff;
     background-color: rgba(110, 168, 254, 0.15);
@@ -446,97 +406,159 @@ a.nav-group-title:hover {
     text-decoration: none;
 }
 
-/* Отступы по уровням — визуальная иерархия */
 .nav-group-content { padding-left: 0.3rem; }
 
-/* ===== Контент ===== */
-main {
-    flex: 1;
-    min-width: 0;
-}
 
-h1 {
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: #fff;
-    margin-bottom: 1.5rem;
-    line-height: 1.25;
-}
+/*------------------------------------------------------------------------------  
+Страничное меню
+------------------------------------------------------------------------------*/
+.page-toc {
+    position: fixed;
+    top: var(--header-height);
+    left: var(--sidebar-width);
+    right: 0;
+    z-index: 90;
 
-h2 {
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: #fff;
-    margin-top: 2.5rem;
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
+    height: var(--toc-height, 48px);
+
+    background-color: var(--bg-card);
     border-bottom: 1px solid var(--border);
+    padding: 0 1.5rem;
+
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+
+    font-size: 0.82rem;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
 }
 
-h3 {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #fff;
-    margin-top: 1.8rem;
-    margin-bottom: 0.8rem;
+.page-toc::-webkit-scrollbar {
+    height: 4px;
 }
 
-p {
-    margin-bottom: 1rem;
-    color: #c0c0c0;
+.page-toc::-webkit-scrollbar-track {
+    background: transparent;
 }
 
-main a {
-    color: var(--accent);
-    text-decoration: none;
-    font-weight: bold;
+.page-toc::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 2px;
 }
 
-main a:hover {
-    text-decoration: underline;
+.page-toc::-webkit-scrollbar-thumb:hover {
+    background: var(--text-dim);
 }
 
-ul.notes,
-ul.content-list {
+.page-toc-title {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--text-dim);
+    margin-right: 0.4rem;
+    flex-shrink: 0;               
+    white-space: nowrap;
+}
+
+.page-toc ul {
     list-style: none;
-    margin: 1.5rem 0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: nowrap;            
+    align-items: center;
+    gap: 0.4rem;
+    flex-shrink: 0;               
 }
 
-ul.content-list li {
-    margin-bottom: 0.6rem;
-    padding-left: 1.2rem;
-    position: relative;
-    color: #c0c0c0;
+.page-toc li {
+    margin: 0;
+    padding: 0;
+    flex-shrink: 0;               
 }
 
-ul.content-list li::before {
-    content: "•";
-    position: absolute;
-    left: 0;
+.page-toc a {
+    display: inline-block;
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 0.25rem 0.7rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background-color: transparent;
+    line-height: 1.3;
+    font-size: 0.78rem;
+    white-space: nowrap;          
+    flex-shrink: 0;               
+    transition: color 0.15s, border-color 0.15s, background-color 0.15s;
+}
+
+.page-toc a:hover {
     color: var(--accent);
+    border-color: var(--accent);
+    background-color: rgba(37, 99, 235, 0.08);
+    text-decoration: none;
 }
 
-ul.notes li {
-    margin-bottom: 0.6rem;
+.page-toc a.active {
+    color: #fff;
+    background-color: var(--accent);
+    border-color: var(--accent);
+    font-weight: 600;
 }
 
-ul.notes a {
+.page-toc .toc-level-2 { font-weight: 600; }
+.page-toc .toc-level-3 { font-size: 0.76rem; opacity: 0.95; }
+.page-toc .toc-level-4 { font-size: 0.74rem; opacity: 0.9; }
+.page-toc .toc-level-5 { font-size: 0.72rem; opacity: 0.85; }
+.page-toc .toc-level-6 { font-size: 0.7rem; opacity: 0.8; }
+
+h1[id], h2[id], h3[id], h4[id], h5[id], h6[id] {
+    scroll-margin-top: calc(var(--header-height) + var(--toc-height, 0px) + 20px);
+}
+
+
+/*------------------------------------------------------------------------------  
+Навигация между страницами
+------------------------------------------------------------------------------*/
+.page-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    gap: 1rem;
+}
+
+.page-nav a {
     color: var(--accent);
     text-decoration: none;
     font-size: 0.95rem;
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    transition: all 0.2s;
+    background-color: var(--bg-card);
 }
 
-ul.notes a:hover {
-    text-decoration: underline;
-}
-
-ul.notes a::after {
-    content: " →";
-    opacity: 0.6;
+.page-nav a:hover {
+    border-color: var(--accent);
+    background-color: rgba(110, 168, 254, 0.08);
+    text-decoration: none;
 }
 
 
-/* ===== Сетка примеров ===== */
+/*------------------------------------------------------------------------------  
+Сетка примеров
+------------------------------------------------------------------------------*/
 .example-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -588,25 +610,22 @@ ul.notes a::after {
 }
 
 .example-item {
-    position: relative;         /* 👈 нужно для абсолютного позиционирования оверлея */
+    position: relative;         
     overflow: hidden;
 }
-
 
 .example-item {
     position: relative;
     overflow: hidden;
-    /* остальные стили — border, radius, transition и т.д. */
 }
 
-/* ===== Затемнение на всю картинку ===== */
 .example-item::before {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    height: 200px;                      /* высота картинки */
+    height: 200px;                      
     background-color: rgba(0, 0, 0, 0.85);
     opacity: 0;
     transition: opacity 0.25s ease;
@@ -614,11 +633,10 @@ ul.notes a::after {
     z-index: 2;
 }
 
-/* ===== Иконка по центру ===== */
 .example-item::after {
     content: "";
     position: absolute;
-    top: 100px;                         /* 200px / 2 — центр */
+    top: 100px;                         
     left: 50%;
     width: 48px;
     height: 48px;
@@ -631,10 +649,9 @@ ul.notes a::after {
     transition: opacity 0.25s ease, transform 0.45s cubic-bezier(0.38, -0.55, 0.27, 1.65); 
     
     pointer-events: none;
-    z-index: 3;                         /* поверх затемнения */
+    z-index: 3;                         
 }
 
-/* ===== При наведении — затемняем и показываем иконку ===== */
 .example-item:hover::before {
     opacity: 1;
 }
@@ -656,33 +673,9 @@ ul.notes a::after {
 }
 
 
-
-
-
-
-
-
-
-/* Планшет — 3 в ряд */
-@media (max-width: 1100px) {
-    .example-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-/* Мобильный — 2 в ряд */
-@media (max-width: 700px) {
-    .example-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .example-item img {
-        height: 160px;
-    }
-}
-
-
-/* ===== Инфо-блоки ===== */
+/*------------------------------------------------------------------------------  
+Инфо-блоки
+------------------------------------------------------------------------------*/
 .info-box,
 .warn-box,
 .note-box,
@@ -730,7 +723,7 @@ ul.notes a::after {
 .note-box .boxtitle { color: var(--text-dim); }
 .tip-box  .boxtitle { color: var(--success); }
 
-/* ===== Заголовок инфо-блока ===== */
+/* Заголовок инфо-блока */
 .boxtitle {
     display: flex;
     align-items: center;      
@@ -757,7 +750,7 @@ ul.notes a::after {
     color: inherit;
 }
 
-/* ===== Списки внутри инфо-блоков ===== */
+/* Списки внутри инфо-блоков */
 .info-box ul,
 .warn-box ul,
 .note-box ul,
@@ -767,7 +760,7 @@ ul.notes a::after {
 .note-box ol,
 .tip-box  ol {
     margin: 0.6rem 0 0.2rem 0;
-    padding-left: 1.4rem;      /* 👈 отступ слева для маркеров/номеров */
+    padding-left: 1.4rem;      
     color: inherit;
 }
 
@@ -801,7 +794,42 @@ ul.notes a::after {
 .tip-box  ol li::marker { color: var(--success); font-weight: 600; }
 
 
-/* ===== Таблицы ===== */
+
+/*------------------------------------------------------------------------------  
+ТЕГИ
+------------------------------------------------------------------------------*/
+h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 1.5rem;
+    line-height: 1.25;
+}
+
+h2 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #fff;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+}
+
+h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #fff;
+    margin-top: 1.8rem;
+    margin-bottom: 0.8rem;
+}
+
+p {
+    margin-bottom: 1rem;
+    color: #c0c0c0;
+}
+
+/* Таблицы */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -852,36 +880,10 @@ pre code {
     color: #e8e8e8;
 }
 
-/* ===== Навигация между страницами ===== */
-.page-nav {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 1rem;
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    gap: 1rem;
-}
 
-.page-nav a {
-    color: var(--accent);
-    text-decoration: none;
-    font-size: 0.95rem;
-    padding: 0.6rem 1rem;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    transition: all 0.2s;
-    background-color: var(--bg-card);
-}
-
-.page-nav a:hover {
-    border-color: var(--accent);
-    background-color: rgba(110, 168, 254, 0.08);
-    text-decoration: none;
-}
-
-/* ===== Подвал ===== */
+/*------------------------------------------------------------------------------  
+Подвал
+------------------------------------------------------------------------------*/
 footer {
     margin-left: var(--sidebar-width);
     text-align: center;
@@ -891,7 +893,16 @@ footer {
     border-top: 1px solid var(--border);
 }
 
-/* ===== Мобильная адаптация ===== */
+
+/*------------------------------------------------------------------------------  
+Мобильная адаптация
+------------------------------------------------------------------------------*/
+@media (max-width: 1100px) {
+    .example-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
 @media (max-width: 900px) {
 
     /* Сайдбар уезжает влево */
@@ -937,21 +948,33 @@ footer {
         cursor: pointer;
         padding: 0.3rem 0.6rem;
     }
-
-    /* Прячем верхнюю навигацию */
-    nav.top-nav {
-        display: none;
+    
+    .page-toc {
+        left: 0;                    
+        right: 0;
+        padding: 0.5rem 1rem;       
+        font-size: 0.75rem;
+        gap: 0.35rem;
     }
 
-    /* Search box на мобиле — прячем или сужаем */
-    .search-box {
-        width: 140px;
+    .page-toc-title {
+        width: 100%;                
+        margin-bottom: 0.3rem;
+    }
+
+    .page-toc a {
+        font-size: 0.72rem;
+        padding: 0.18rem 0.55rem;
     }
 }
 
-/* На десктопе бургер скрыт */
-@media (min-width: 901px) {
-    .burger {
-        display: none;
+@media (max-width: 700px) {
+    .example-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .example-item img {
+        height: 160px;
     }
 }
+
