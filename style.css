@@ -6,110 +6,6 @@
 }
 
 
-/*-------------------------------------- Тёмная тема (по умолчанию) */
-:root {
-    --bg: #272727;
-    --bg-header: #1a1a1a;
-    --bg-sidebar: #1a1a1a;
-    --bg-card: #222;
-
-    --border: #313131;
-
-    --text: #e8e8e8;
-    --text-muted: #a0a0a0;
-    --text-dim: #666;
-
-    --logo-text: #ffff03;
-
-    --accent: #6ea8fe;
-
-    --shadow-sidebar: 4px 0 20px rgba(0, 0, 0, 0.5);
-    --overlay-bg: rgba(0, 0, 0, 0.6);
-
-    --scrollbar-thumb: #2a2a2a;
-    --scrollbar-thumb-hover: #3a3a3a;
-
-    --info-bg: rgba(110, 168, 254, 0.08);
-    --info-border: #6ea8fe;
-    --info-text: #b8d0f5;
-
-    --warn-bg: rgba(255, 183, 77, 0.08);
-    --warn-border: #ffb74d;
-    --warn-text: #f5d9a8;
-
-    --note-bg: rgba(160, 160, 160, 0.08);
-    --note-border: #a0a0a0;
-    --note-text: #cccccc;
-
-    --tip-bg: rgba(76, 175, 80, 0.08);
-    --tip-border: #4caf50;
-    --tip-text: #b8e6bb;
-
-    --box-title: #ffffff;
-    --code-bg: #1a1a1a;
-    --code-text: #e0a0a0;
-    --pre-bg: #1a1a1a;
-
-    /* Размеры */
-    --sidebar-width: 320px;
-    --header-height: 64px;
-    --toc-height: 48px;
-}
-
-/*-------------------------------------- Светлая тема */
-html.light {
-    --bg: #f8f9fa;
-    --bg-header: #bcc1c6;
-    --bg-sidebar: #ebeff5;
-    --bg-card: #f0f2f5;
-
-    --border: #8690a0;
-
-    --text: #2b3038;
-    --text-muted: #4a5568;
-    --text-dim: #8b95a5;
-    
-    --logo-text: #111;
-
-    --accent: #222d3e;
-
-    --shadow-sidebar: 4px 0 20px rgba(0, 0, 0, 0.08);
-    --overlay-bg: rgba(0, 0, 0, 0.35);
-
-    --scrollbar-thumb: #d0d4da;
-    --scrollbar-thumb-hover: #b8bdc5;
-
-    --info-bg: #eff6ff;
-    --info-border: #3b82f6;
-    --info-text: #1e40af;
-
-    --warn-bg: #fffbeb;
-    --warn-border: #f59e0b;
-    --warn-text: #92400e;
-
-    --note-bg: #f3f4f6;
-    --note-border: #9ca3af;
-    --note-text: #374151;
-
-    --tip-bg: #ecfdf5;
-    --tip-border: #10b981;
-    --tip-text: #065f46;
-
-    --box-title: #111827;
-    --code-bg: #f0f2f5;
-    --code-text: #b91c1c;
-    --pre-bg: #f8f9fa;
-}
-
-/*-------------------------------------- Избавление от мигания */
-.no-transition,
-.no-transition *,
-.no-transition *::before,
-.no-transition *::after {
-    transition: none !important;
-}
-
-
 /*-------------------------------------- Базовая разметка */
 html {
     scroll-behavior: auto;
@@ -136,25 +32,41 @@ html.lenis body {
     pointer-events: none;
 }
 
+/*-------------------------------------- Избавление от мигания */
+.no-transition,
+.no-transition *,
+.no-transition *::before,
+.no-transition *::after {
+    transition: none !important;
+}
+
+/*-------------------------------------- Размеры (общие для тем) */
+:root {
+    --sidebar-width: 320px;
+    --header-height: 64px;
+    --toc-height: 48px;
+}
+
+/*-------------------------------------- Базовые стили (ТЁМНАЯ ТЕМА по умолчанию) */
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
                  "Helvetica Neue", Arial, sans-serif;
-    background-color: var(--bg);
-    color: var(--text);
+    background-color: #272727;
+    color: #e8e8e8;
     line-height: 1.6;
     min-height: 100vh;
     margin: 0;
 }
 
-/*-------------------------------------- Шапка */
+/* Шапка */
 header {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     height: var(--header-height);
-    background-color: var(--bg-header);
-    border-bottom: 1px solid var(--border);
+    background-color: #1a1a1a;
+    border-bottom: 1px solid #313131;
     padding: 0 1.5rem;
     display: flex;
     align-items: center;
@@ -169,7 +81,7 @@ header {
     gap: 0.5rem;
     font-size: 1.4rem;
     font-weight: 700;
-    color: var(--logo-text);
+    color: #ffff03;
     letter-spacing: 0.5px;
     text-decoration: none;
     flex-shrink: 0;
@@ -182,7 +94,7 @@ header {
     flex-shrink: 0;
 }
 
-/*-------------------------------------- Шапка(Правая часть) */
+/* Правая часть шапки */
 .header-right {
     display: flex;
     align-items: center;
@@ -190,12 +102,12 @@ header {
     flex-shrink: 0;
 }
 
-/*-------------------------------------- Шапка(Кнопка темы) */
+/* Кнопка темы */
 .theme-toggle {
     background: none;
-    border: none;                    
-    outline: none;                   
-    -webkit-appearance: none;        
+    border: none;
+    outline: none;
+    -webkit-appearance: none;
     appearance: none;
     width: 38px;
     height: 38px;
@@ -205,14 +117,13 @@ header {
     cursor: pointer;
     line-height: 1;
     padding: 0;
-    color: var(--text);
+    color: #e8e8e8;
     flex-shrink: 0;
 }
 
 .theme-toggle:hover {
     background: none;
-    
-    color: var(--accent);
+    color: #6ea8fe;
 }
 
 .theme-toggle svg {
@@ -222,19 +133,19 @@ header {
     display: block;
 }
 
-/*-------------------------------------- Шапка(Показ значков в зависимости от темы) */
+/* Иконки ☀/☾ */
 .theme-toggle .icon-sun { display: inline-block; }
 .theme-toggle .icon-moon { display: none; }
 
 html.light .theme-toggle .icon-sun { display: none; }
 html.light .theme-toggle .icon-moon { display: inline-block; }
 
-/*-------------------------------------- Шапка(Бургер-меню) */
+/* Бургер */
 .burger {
     display: none;
     background: none;
     border: none;
-    color: var(--text);
+    color: #e8e8e8;
     font-size: 1.5rem;
     cursor: pointer;
     padding: 0.3rem 0.6rem;
@@ -242,34 +153,34 @@ html.light .theme-toggle .icon-moon { display: inline-block; }
     flex-shrink: 0;
 }
 
-/*-------------------------------------- Сайдбар */
+/* Сайдбар */
 aside {
     position: fixed;
     top: var(--header-height);
     left: 0;
     bottom: 0;
     width: var(--sidebar-width);
-    background-color: var(--bg-sidebar);
-    border-right: 1px solid var(--border);
+    background-color: #1a1a1a;
+    border-right: 1px solid #313131;
     padding: 1.2rem 0.9rem;
     overflow-y: auto;
     overscroll-behavior: contain;
     scrollbar-width: thin;
-    scrollbar-color: var(--scrollbar-thumb) transparent;
+    scrollbar-color: #2a2a2a transparent;
     z-index: 100;
 }
 
 aside::-webkit-scrollbar { width: 8px; }
 aside::-webkit-scrollbar-track { background: transparent; }
 aside::-webkit-scrollbar-thumb {
-    background: var(--scrollbar-thumb);
+    background: #2a2a2a;
     border-radius: 4px;
 }
 aside::-webkit-scrollbar-thumb:hover {
-    background: var(--scrollbar-thumb-hover);
+    background: #3a3a3a;
 }
 
-/*-------------------------------------- Сайлбар(Заголовки групп) */
+/* Заголовки групп в сайдбаре */
 .nav-group {
     margin-bottom: 0.2rem;
 }
@@ -284,7 +195,7 @@ aside::-webkit-scrollbar-thumb:hover {
     background: none;
     border: none;
     border-radius: 4px;
-    color: var(--text);
+    color: #e8e8e8;
     font-family: inherit;
     font-size: 0.88rem;
     font-weight: 700;
@@ -296,13 +207,13 @@ aside::-webkit-scrollbar-thumb:hover {
 }
 
 .nav-group-title:hover {
-    color: var(--accent);
+    color: #6ea8fe;
     background-color: rgba(37, 99, 235, 0.1);
 }
 
 .nav-group-title:focus-visible {
     background-color: rgba(110, 168, 254, 0.2);
-    color: var(--accent);
+    color: #6ea8fe;
 }
 
 .nav-group-title .arrow {
@@ -333,7 +244,7 @@ aside::-webkit-scrollbar-thumb:hover {
     list-style: none;
     padding: 0.2rem 0 0.4rem 0.6rem;
     margin: 0;
-    border-left: 1px solid var(--border);
+    border-left: 1px solid #313131;
     margin-left: 0.6rem;
 }
 
@@ -343,7 +254,7 @@ aside::-webkit-scrollbar-thumb:hover {
 
 .nav-group-content a {
     display: block;
-    color: var(--text-muted);
+    color: #a0a0a0;
     text-decoration: none;
     font-size: 0.88rem;
     padding: 0.32rem 0.6rem;
@@ -352,12 +263,12 @@ aside::-webkit-scrollbar-thumb:hover {
 }
 
 .nav-group-content a:hover {
-    color: var(--accent);
+    color: #6ea8fe;
     background-color: rgba(110, 168, 254, 0.1);
 }
 
 .nav-group-content a.active {
-    color: var(--accent);
+    color: #6ea8fe;
     background-color: rgba(110, 168, 254, 0.2);
     font-weight: 500;
 }
@@ -370,21 +281,21 @@ aside::-webkit-scrollbar-thumb:hover {
     padding-left: 0.6rem;
     font-size: 0.85rem;
     font-weight: 600;
-    color: var(--text-muted);
+    color: #a0a0a0;
 }
 
 .nav-group-content .nav-group-title:hover {
-    color: var(--accent);
+    color: #6ea8fe;
 }
 
 .nav-group-content .nav-group-content ul {
     padding-left: 0.8rem;
     margin-left: 0.6rem;
-    border-left: 1px solid var(--border);
+    border-left: 1px solid #313131;
 }
 
 a.nav-group-title.active {
-    color: var(--accent);
+    color: #6ea8fe;
     background-color: rgba(110, 168, 254, 0.15);
     border-radius: 4px;
 }
@@ -399,35 +310,35 @@ a.nav-group-title:hover {
 
 .nav-group-content { padding-left: 0.3rem; }
 
-/*-------------------------------------- Сайдбар(Навигация между страницами) */
+/* Навигация между страницами */
 .page-nav {
     display: flex;
     justify-content: space-between;
     margin-top: 1rem;
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
+    border-top: 1px solid #313131;
+    border-bottom: 1px solid #313131;
     gap: 1rem;
 }
 
 .page-nav a {
-    color: var(--accent);
+    color: #6ea8fe;
     text-decoration: none;
     font-size: 0.95rem;
     padding: 0.6rem 1rem;
-    border: 1px solid var(--border);
+    border: 1px solid #313131;
     border-radius: 6px;
-    background-color: var(--bg-card);
+    background-color: #222;
 }
 
 .page-nav a:hover {
-    border-color: var(--accent);
+    border-color: #6ea8fe;
     background-color: rgba(110, 168, 254, 0.08);
     text-decoration: none;
 }
 
-/*-------------------------------------- Страничное меню под шапкой */
+/* Страничное меню под шапкой */
 .page-toc {
     position: fixed;
     top: var(--header-height);
@@ -435,8 +346,8 @@ a.nav-group-title:hover {
     right: 0;
     z-index: 90;
     height: var(--toc-height, 48px);
-    background-color: var(--bg-card);
-    border-bottom: 1px solid var(--border);
+    background-color: #222;
+    border-bottom: 1px solid #313131;
     padding: 0 1.5rem;
     display: flex;
     align-items: center;
@@ -446,17 +357,17 @@ a.nav-group-title:hover {
     overflow-y: hidden;
     white-space: nowrap;
     scrollbar-width: thin;
-    scrollbar-color: var(--border) transparent;
+    scrollbar-color: #313131 transparent;
 }
 
 .page-toc::-webkit-scrollbar { height: 4px; }
 .page-toc::-webkit-scrollbar-track { background: transparent; }
 .page-toc::-webkit-scrollbar-thumb {
-    background: var(--border);
+    background: #313131;
     border-radius: 2px;
 }
 .page-toc::-webkit-scrollbar-thumb:hover {
-    background: var(--text-dim);
+    background: #666;
 }
 
 .page-toc-title {
@@ -464,7 +375,7 @@ a.nav-group-title:hover {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.8px;
-    color: var(--text-dim);
+    color: #666;
     margin-right: 0.4rem;
     flex-shrink: 0;
     white-space: nowrap;
@@ -489,10 +400,10 @@ a.nav-group-title:hover {
 
 .page-toc a {
     display: inline-block;
-    color: var(--text-muted);
+    color: #a0a0a0;
     text-decoration: none;
     padding: 0.25rem 0.7rem;
-    border: 1px solid var(--border);
+    border: 1px solid #313131;
     border-radius: 999px;
     background-color: transparent;
     line-height: 1.3;
@@ -502,15 +413,16 @@ a.nav-group-title:hover {
 }
 
 .page-toc a:hover {
-    color: var(--accent);
-    border-color: var(--accent);
+    color: #6ea8fe;
+    border-color: #6ea8fe;
     background-color: rgba(37, 99, 235, 0.08);
     text-decoration: none;
 }
 
 .page-toc a.active {
-    background-color: var(--accent);
-    border-color: var(--accent);
+    background-color: #6ea8fe;
+    border-color: #6ea8fe;
+    color: #fff;
     font-weight: 600;
 }
 
@@ -524,8 +436,7 @@ h1[id], h2[id], h3[id], h4[id], h5[id], h6[id] {
     scroll-margin-top: calc(var(--header-height) + var(--toc-height, 0px) + 20px);
 }
 
-
-/*-------------------------------------- Главный контент */
+/* Главный контент */
 main {
     flex: 1;
     min-width: 0;
@@ -541,7 +452,7 @@ body.has-toc main {
 }
 
 main a {
-    color: var(--accent);
+    color: #6ea8fe;
     text-decoration: none;
     font-weight: bold;
 }
@@ -584,24 +495,24 @@ main a:hover {
     display: block;
     margin: 0 auto;
     border-radius: 6px;
-    border: 1px solid var(--border);
+    border: 1px solid #313131;
 }
 
 .content figcaption {
     margin-top: 0.6rem;
     font-size: 0.85rem;
-    color: var(--text-dim);
+    color: #666;
     font-style: italic;
     line-height: 1.4;
 }
 
-/*-------------------------------------- Главный контент(Списки) */
+/* Списки */
 .content ul,
 ul.content-list {
     list-style: disc;
     margin: 1rem 0;
     padding-left: 1.5rem;
-    color: var(--text-muted);
+    color: #a0a0a0;
 }
 
 ul.content-list > li::before {
@@ -615,13 +526,13 @@ ul.content-list li {
     padding-left: 0.2rem;
 }
 
-/*-------------------------------------- Главный контент(Вложенные списки) */
+/* Вложенные списки */
 .content ul ul,
 ul.content-list ul {
     list-style: disc;
     margin: 0.4rem 0;
     padding-left: 1.2rem;
-    color: var(--text-muted);
+    color: #a0a0a0;
 }
 
 .content ul ul ul,
@@ -632,14 +543,14 @@ ul.content-list ul ul {
 
 .content ul li::marker,
 ul.content-list li::marker {
-    color: var(--accent);
+    color: #6ea8fe;
 }
 
-/*-------------------------------------- Главный контент(Заголовки и текст) */
+/* Заголовки и текст */
 h1 {
     font-size: 2.2rem;
     font-weight: 700;
-    color: var(--text);
+    color: #e8e8e8;
     margin-bottom: 1.5rem;
     line-height: 1.25;
 }
@@ -647,17 +558,17 @@ h1 {
 h2 {
     font-size: 1.4rem;
     font-weight: 600;
-    color: var(--text);
+    color: #e8e8e8;
     margin-top: 2.5rem;
     margin-bottom: 1rem;
     padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid #313131;
 }
 
 h3 {
     font-size: 1.1rem;
     font-weight: 600;
-    color: var(--text);
+    color: #e8e8e8;
     margin-top: 1.8rem;
     margin-bottom: 0.8rem;
 }
@@ -665,23 +576,23 @@ h3 {
 h4, h5, h6 {
     font-size: 1rem;
     font-weight: 600;
-    color: var(--text);
+    color: #e8e8e8;
     margin-top: 1.5rem;
     margin-bottom: 0.6rem;
 }
 
 p {
     margin-bottom: 1rem;
-    color: var(--text-muted);
+    color: #a0a0a0;
 }
 
-/*-------------------------------------- Главный контент(Таблицы) */
+/* Таблицы */
 table {
     width: 100%;
     border-collapse: collapse;
     margin: 1.5rem 0;
     font-size: 0.92rem;
-    border: 1px solid var(--border);
+    border: 1px solid #313131;
     border-radius: 8px;
     overflow: hidden;
 }
@@ -689,16 +600,16 @@ table {
 th {
     text-align: left;
     padding: 0.7rem 1rem;
-    background-color: var(--bg-card);
-    color: var(--text);
-    border-bottom: 1px solid var(--border);
+    background-color: #222;
+    color: #e8e8e8;
+    border-bottom: 1px solid #313131;
     font-weight: 600;
 }
 
 td {
     padding: 0.7rem 1rem;
-    border-bottom: 1px solid var(--border);
-    color: var(--text-muted);
+    border-bottom: 1px solid #313131;
+    color: #a0a0a0;
     vertical-align: top;
 }
 
@@ -707,17 +618,13 @@ tr:last-child td {
 }
 
 tr:hover td {
-    background-color: rgba(0, 0, 0, 0.03);
+    background-color: rgba(255, 255, 255, 0.03);
 }
 
-html.light tr:hover td {
-    background-color: rgba(0, 0, 0, 0.02);
-}
-
-/*-------------------------------------- Главный контент(Код) */
+/* Код */
 code {
-    background-color: var(--code-bg);
-    color: var(--code-text);
+    background-color: #1a1a1a;
+    color: #e0a0a0;
     padding: 0.15rem 0.4rem;
     border-radius: 3px;
     font-family: "SF Mono", Consolas, Monaco, monospace;
@@ -725,8 +632,8 @@ code {
 }
 
 pre {
-    background-color: var(--pre-bg);
-    border: 1px solid var(--border);
+    background-color: #1a1a1a;
+    border: 1px solid #313131;
     border-radius: 6px;
     padding: 1rem 1.2rem;
     overflow-x: auto;
@@ -736,15 +643,10 @@ pre {
 pre code {
     background: none;
     padding: 0;
-    color: var(--text);
+    color: #e8e8e8;
 }
 
-
-
-
-
-
-/*-------------------------------------- Сетка примеров */
+/* Сетка примеров */
 .example-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -757,19 +659,19 @@ pre code {
     overflow: hidden;
     display: block;
     text-decoration: none;
-    color: var(--text);
-    border: 1px solid var(--border);
+    color: #e8e8e8;
+    border: 1px solid #313131;
     border-radius: 8px;
-    background-color: var(--bg-card);
-    transition: 
-        transform 0.25s ease,           
-        border-color 0.25s ease,      
-        box-shadow 0.25s ease; 
+    background-color: #222;
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
 }
 
 .example-item:hover {
     transform: translateY(-5px);
-    border-color: var(--accent);
+    border-color: #6ea8fe;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
     text-decoration: none;
 }
@@ -779,7 +681,7 @@ pre code {
     width: 100%;
     height: 200px;
     object-fit: cover;
-    background-color: var(--bg);
+    background-color: #272727;
 }
 
 .example-item .example-title {
@@ -787,7 +689,7 @@ pre code {
     padding: 0.6rem 0.7rem;
     font-size: 0.85rem;
     font-weight: 500;
-    color: var(--text-muted);
+    color: #a0a0a0;
     text-align: center;
     white-space: nowrap;
     overflow: hidden;
@@ -796,10 +698,9 @@ pre code {
 }
 
 .example-item:hover .example-title {
-    color: var(--accent);
+    color: #6ea8fe;
 }
 
-/*-------------------------------------- Сетка примеров(Затемнение при наведении) */
 .example-item::before {
     content: "";
     position: absolute;
@@ -814,7 +715,6 @@ pre code {
     z-index: 2;
 }
 
-/*-------------------------------------- Сетка примеров(Иконка скачивания) */
 .example-item::after {
     content: "";
     position: absolute;
@@ -848,7 +748,7 @@ pre code {
     }
 }
 
-/*-------------------------------------- Инфо-блоки */
+/* Инфо-блоки */
 .info-box,
 .warn-box,
 .note-box,
@@ -861,37 +761,37 @@ pre code {
 }
 
 .info-box {
-    background-color: var(--info-bg);
-    border-left-color: var(--info-border);
-    color: var(--info-text);
+    background-color: rgba(110, 168, 254, 0.08);
+    border-left-color: #6ea8fe;
+    color: #b8d0f5;
 }
 .warn-box {
-    background-color: var(--warn-bg);
-    border-left-color: var(--warn-border);
-    color: var(--warn-text);
+    background-color: rgba(255, 183, 77, 0.08);
+    border-left-color: #ffb74d;
+    color: #f5d9a8;
 }
 .note-box {
-    background-color: var(--note-bg);
-    border-left-color: var(--note-border);
-    color: var(--note-text);
+    background-color: rgba(160, 160, 160, 0.08);
+    border-left-color: #a0a0a0;
+    color: #cccccc;
 }
 .tip-box {
-    background-color: var(--tip-bg);
-    border-left-color: var(--tip-border);
-    color: var(--tip-text);
+    background-color: rgba(76, 175, 80, 0.08);
+    border-left-color: #4caf50;
+    color: #b8e6bb;
 }
 
 .info-box strong,
 .warn-box strong,
 .note-box strong,
 .tip-box strong {
-    color: var(--text-muted);
+    color: #e8e8e8;
 }
 
-.info-box .boxtitle { color: var(--info-border); }
-.warn-box .boxtitle { color: var(--warn-border); }
-.note-box .boxtitle { color: var(--note-border); }
-.tip-box  .boxtitle { color: var(--tip-border); }
+.info-box .boxtitle { color: #6ea8fe; }
+.warn-box .boxtitle { color: #ffb74d; }
+.note-box .boxtitle { color: #a0a0a0; }
+.tip-box  .boxtitle { color: #4caf50; }
 
 .boxtitle {
     display: flex;
@@ -901,7 +801,7 @@ pre code {
     font-weight: 600;
     font-size: 0.95rem;
     line-height: 1.2;
-    color: var(--text);
+    color: #e8e8e8;
 }
 
 .boxtitle .icon {
@@ -919,7 +819,6 @@ pre code {
     color: inherit;
 }
 
-/*-------------------------------------- Инфо-блоки(Списки внутри блоков) */
 .info-box ul, .warn-box ul, .note-box ul, .tip-box ul,
 .info-box ol, .warn-box ol, .note-box ol, .tip-box ol {
     margin: 0.6rem 0 0.2rem 0;
@@ -940,41 +839,354 @@ pre code {
     margin-bottom: 0;
 }
 
-.info-box ul li::marker { color: var(--info-border); }
-.warn-box ul li::marker { color: var(--warn-border); }
-.note-box ul li::marker { color: var(--note-border); }
-.tip-box  ul li::marker { color: var(--tip-border); }
+.info-box ul li::marker { color: #6ea8fe; }
+.warn-box ul li::marker { color: #ffb74d; }
+.note-box ul li::marker { color: #a0a0a0; }
+.tip-box  ul li::marker { color: #4caf50; }
 
-.info-box ol li::marker { color: var(--info-border); font-weight: 600; }
-.warn-box ol li::marker { color: var(--warn-border); font-weight: 600; }
-.note-box ol li::marker { color: var(--note-border); font-weight: 600; }
-.tip-box  ol li::marker { color: var(--tip-border); font-weight: 600; }
+.info-box ol li::marker { color: #6ea8fe; font-weight: 600; }
+.warn-box ol li::marker { color: #ffb74d; font-weight: 600; }
+.note-box ol li::marker { color: #a0a0a0; font-weight: 600; }
+.tip-box  ol li::marker { color: #4caf50; font-weight: 600; }
 
-/*-------------------------------------- Подвал */
+/* Подвал */
 footer {
     margin-left: var(--sidebar-width);
     text-align: center;
     padding: 2rem;
-    color: var(--text-dim);
+    color: #666;
     font-size: 0.85rem;
-    border-top: 1px solid var(--border);
+    border-top: 1px solid #313131;
 }
 
 
-/*-------------------------------------- Мобильная адаптация(Планшет — 3 колонки) */
+/* ================================================================
+   СВЕТЛАЯ ТЕМА — переопределения через html.light
+   ================================================================ */
+
+html.light body {
+    background-color: #f8f9fa;
+    color: #2b3038;
+}
+
+/* Шапка */
+html.light header {
+    background-color: #bcc1c6;
+    border-bottom-color: #8690a0;
+}
+
+html.light .logo {
+    color: #111;
+}
+
+html.light .theme-toggle {
+    color: #2b3038;
+}
+
+html.light .theme-toggle:hover {
+    color: #222d3e;
+}
+
+html.light .burger {
+    color: #2b3038;
+}
+
+/* Сайдбар */
+html.light aside {
+    background-color: #ebeff5;
+    border-right-color: #8690a0;
+    scrollbar-color: #d0d4da transparent;
+}
+
+html.light aside::-webkit-scrollbar-thumb {
+    background: #d0d4da;
+}
+html.light aside::-webkit-scrollbar-thumb:hover {
+    background: #b8bdc5;
+}
+
+html.light .nav-group-title {
+    color: #2b3038;
+}
+
+html.light .nav-group-title:hover {
+    color: #222d3e;
+    background-color: rgba(34, 45, 62, 0.1);
+}
+
+html.light .nav-group-title:focus-visible {
+    background-color: rgba(34, 45, 62, 0.2);
+    color: #222d3e;
+}
+
+html.light .nav-group-content ul {
+    border-left-color: #8690a0;
+}
+
+html.light .nav-group-content a {
+    color: #4a5568;
+}
+
+html.light .nav-group-content a:hover {
+    color: #222d3e;
+    background-color: rgba(34, 45, 62, 0.1);
+}
+
+html.light .nav-group-content a.active {
+    color: #222d3e;
+    background-color: rgba(34, 45, 62, 0.2);
+}
+
+html.light .nav-group-content .nav-group-title {
+    color: #4a5568;
+}
+
+html.light .nav-group-content .nav-group-title:hover {
+    color: #222d3e;
+}
+
+html.light .nav-group-content .nav-group-content ul {
+    border-left-color: #8690a0;
+}
+
+html.light a.nav-group-title.active {
+    color: #222d3e;
+    background-color: rgba(34, 45, 62, 0.15);
+}
+
+/* Навигация между страницами */
+html.light .page-nav {
+    border-top-color: #8690a0;
+    border-bottom-color: #8690a0;
+}
+
+html.light .page-nav a {
+    color: #222d3e;
+    border-color: #8690a0;
+    background-color: #f0f2f5;
+}
+
+html.light .page-nav a:hover {
+    border-color: #222d3e;
+    background-color: rgba(34, 45, 62, 0.08);
+}
+
+/* Страничное меню */
+html.light .page-toc {
+    background-color: #f0f2f5;
+    border-bottom-color: #8690a0;
+    scrollbar-color: #8690a0 transparent;
+}
+
+html.light .page-toc::-webkit-scrollbar-thumb {
+    background: #8690a0;
+}
+html.light .page-toc::-webkit-scrollbar-thumb:hover {
+    background: #4a5568;
+}
+
+html.light .page-toc-title {
+    color: #8b95a5;
+}
+
+html.light .page-toc a {
+    color: #4a5568;
+    border-color: #8690a0;
+}
+
+html.light .page-toc a:hover {
+    color: #222d3e;
+    border-color: #222d3e;
+    background-color: rgba(34, 45, 62, 0.08);
+}
+
+html.light .page-toc a.active {
+    background-color: #222d3e;
+    border-color: #222d3e;
+    color: #fff;
+}
+
+/* Главный контент */
+html.light main a {
+    color: #222d3e;
+}
+
+html.light .content figure img {
+    border-color: #8690a0;
+}
+
+html.light .content figcaption {
+    color: #8b95a5;
+}
+
+html.light .content ul,
+html.light ul.content-list {
+    color: #4a5568;
+}
+
+html.light .content ul ul,
+html.light ul.content-list ul {
+    color: #4a5568;
+}
+
+html.light .content ul li::marker,
+html.light ul.content-list li::marker {
+    color: #222d3e;
+}
+
+html.light h1,
+html.light h2,
+html.light h3,
+html.light h4,
+html.light h5,
+html.light h6 {
+    color: #2b3038;
+}
+
+html.light h2 {
+    border-bottom-color: #8690a0;
+}
+
+html.light p {
+    color: #4a5568;
+}
+
+/* Таблицы */
+html.light table {
+    border-color: #8690a0;
+}
+
+html.light th {
+    background-color: #f0f2f5;
+    color: #2b3038;
+    border-bottom-color: #8690a0;
+}
+
+html.light td {
+    color: #4a5568;
+    border-bottom-color: #8690a0;
+}
+
+html.light tr:hover td {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+/* Код */
+html.light code {
+    background-color: #f0f2f5;
+    color: #b91c1c;
+}
+
+html.light pre {
+    background-color: #f8f9fa;
+    border-color: #8690a0;
+}
+
+html.light pre code {
+    color: #2b3038;
+}
+
+/* Сетка примеров */
+html.light .example-item {
+    color: #2b3038;
+    border-color: #8690a0;
+    background-color: #f0f2f5;
+}
+
+html.light .example-item:hover {
+    border-color: #222d3e;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+html.light .example-item img {
+    background-color: #f8f9fa;
+}
+
+html.light .example-item .example-title {
+    color: #4a5568;
+}
+
+html.light .example-item:hover .example-title {
+    color: #222d3e;
+}
+
+/* Инфо-блоки */
+html.light .info-box {
+    background-color: #eff6ff;
+    border-left-color: #3b82f6;
+    color: #1e40af;
+}
+html.light .warn-box {
+    background-color: #fffbeb;
+    border-left-color: #f59e0b;
+    color: #92400e;
+}
+html.light .note-box {
+    background-color: #f3f4f6;
+    border-left-color: #9ca3af;
+    color: #374151;
+}
+html.light .tip-box {
+    background-color: #ecfdf5;
+    border-left-color: #10b981;
+    color: #065f46;
+}
+
+html.light .info-box strong,
+html.light .warn-box strong,
+html.light .note-box strong,
+html.light .tip-box strong {
+    color: #111827;
+}
+
+html.light .info-box .boxtitle { color: #3b82f6; }
+html.light .warn-box .boxtitle { color: #f59e0b; }
+html.light .note-box .boxtitle { color: #9ca3af; }
+html.light .tip-box  .boxtitle { color: #10b981; }
+
+html.light .boxtitle {
+    color: #2b3038;
+}
+
+html.light .info-box ul li::marker { color: #3b82f6; }
+html.light .warn-box ul li::marker { color: #f59e0b; }
+html.light .note-box ul li::marker { color: #9ca3af; }
+html.light .tip-box  ul li::marker { color: #10b981; }
+
+html.light .info-box ol li::marker { color: #3b82f6; }
+html.light .warn-box ol li::marker { color: #f59e0b; }
+html.light .note-box ol li::marker { color: #9ca3af; }
+html.light .tip-box  ol li::marker { color: #10b981; }
+
+/* Подвал */
+html.light footer {
+    color: #8b95a5;
+    border-top-color: #8690a0;
+}
+
+
+/* ================================================================
+   МОБИЛЬНАЯ АДАПТАЦИЯ
+   ================================================================ */
+
+/* Планшет — 3 колонки */
 @media (max-width: 1100px) {
     .example-grid {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
-/*-------------------------------------- Мобильная адаптация(Основные изменения) */
+/* Основные изменения */
 @media (max-width: 900px) {
     aside {
         transform: translateX(-100%);
         transition: transform 0.25s ease;
         width: 280px;
-        box-shadow: var(--shadow-sidebar);
+        box-shadow: 4px 0 20px rgba(0, 0, 0, 0.5);
+    }
+
+    html.light aside {
+        box-shadow: 4px 0 20px rgba(0, 0, 0, 0.08);
     }
 
     aside.open {
@@ -998,16 +1210,16 @@ footer {
         padding: 1.5rem 1.2rem 3rem;
     }
 
-    body.has-toc main {
-        margin-top: calc(var(--header-height) + var(--toc-height, 44px));
-    }
-
     .overlay {
         display: none;
         position: fixed;
         inset: 0;
-        background: var(--overlay-bg);
+        background: rgba(0, 0, 0, 0.6);
         z-index: 90;
+    }
+
+    html.light .overlay {
+        background: rgba(0, 0, 0, 0.35);
     }
 
     .overlay.open {
@@ -1054,7 +1266,7 @@ footer {
     }
 }
 
-/*-------------------------------------- Мобильная адаптация(Смартфон — 2 колонки) */
+/* Смартфон — 2 колонки */
 @media (max-width: 700px) {
     .example-grid {
         grid-template-columns: repeat(2, 1fr);
