@@ -28,7 +28,7 @@
                 { title: "Ключевые понятия", children: [
                     { title: "Общая схема работы", href: `${prefix}pages/main-principle.html` },
                     { title: "Проекты и ассеты", href: `${prefix}pages/info-assets-and-projects.html` },
-                    { title: "Композиции", href: `${prefix}pages/info-compositions.html` },
+                    { title: "Композиция", href: `${prefix}pages/info-composition.html` },
                     { title: "Слои", href: `${prefix}pages/info-layers.html` },
                     { title: "Соединения", href: `${prefix}pages/info-connections.html` },
                     { title: "Контекст", href: `${prefix}pages/info-context.html` },
@@ -209,10 +209,7 @@
             
             
             
-            { title: "Композиция", children: [
-                        { title: "Composition", href: `${prefix}pages/composition.html` },
-                        { title: "Pre-Comp Overrides", href: `${prefix}pages/composition-precomp-overrides.html` },
-                    ]},
+            
                 // ===== ФОРМЫ =====
                 { title: "Формы", children: [
                     { title: "Что такое формы?", href: `${prefix}pages/shapes.html` },

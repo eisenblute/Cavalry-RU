@@ -4,6 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Проекты и ассеты | Cavalry</title>
+    <script>
+    (function () {
+        const saved = localStorage.getItem('cavalry-theme');
+        const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+        const theme = saved || (prefersLight ? 'light' : 'dark');
+        if (theme === 'light') {
+            document.documentElement.classList.add('light');
+        }
+    })();
+</script>
+    <style>
+        .light-preload body { background: #fff; }
+    </style>
     <link rel="icon" href="../favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../style.css">
 </head>
@@ -15,11 +28,11 @@
 
 <nav class="page-toc">
     <ul>
-        <li><a class="toc-level-2" href="#Формат проекта">Формат проекта</a></li>
-        <li><a class="toc-level-2" href="#Настройки проекта">Настройки проекта</a></li>
-        <li><a class="toc-level-2" href="#Ассеты">Ассеты</a></li>
-        <li><a class="toc-level-2" href="#Импортируемые форматы">Импортируемые форматы</a></li>
-        <li><a class="toc-level-2" href="#Умные папки">Умные папки</a></li>
+        <li><a class="toc-item" href="#Формат проекта">Формат проекта</a></li>
+        <li><a class="toc-item" href="#Настройки проекта">Настройки проекта</a></li>
+        <li><a class="toc-item" href="#Ассеты">Ассеты</a></li>
+        <li><a class="toc-item" href="#Импортируемые форматы">Импортируемые форматы</a></li>
+        <li><a class="toc-item" href="#Умные папки">Умные папки</a></li>
     </ul>
 </nav>
 
@@ -63,7 +76,7 @@
                 <img class="icon" src="../imgs/note.svg" width="20" height="20" alt="">
                 <span>Создание настроек проекта</span>
             </div>
-            <p>Для создания настроек нужно в нижнем левом углу окна ассетов нажать на выпадающий список и выбрать <code>Create</code>:</p>
+            <p>Для создания настроек нужно в нижнем левом углу <strong>Окна ассетов</strong> нажать на выпадающий список и выбрать <code>Create</code>:</p>
             
             <figure>
                 <img src="../imgs/create-project-settings.png">
@@ -95,7 +108,7 @@
         </p>
 
         <p>
-            Все ассеты отображаются в специальном окне <strong>Assets Window</strong>,
+            Все ассеты отображаются в специальном <strong>Окне ассетов</strong>,
             которое служит центром управления ресурсами проекта:
         </p>
 
@@ -219,6 +232,7 @@
 <script src="../header.js"></script>
 <script src="../footer.js"></script>
 <script src="../script.js"></script>
+<script src="../theme.js"></script>
 <script src="../smooth-scroll.js"></script> 
 </body>
 </html>

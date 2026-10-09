@@ -4,6 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Общая схема работы | Cavalry</title>
+    <script>
+    (function () {
+        const saved = localStorage.getItem('cavalry-theme');
+        const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+        const theme = saved || (prefersLight ? 'light' : 'dark');
+        if (theme === 'light') {
+            document.documentElement.classList.add('light');
+        }
+    })();
+</script>
+    <style>
+        .light-preload body { background: #ffffff; }
+    </style>
     <link rel="icon" href="../favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../style.css">
 </head>
@@ -21,11 +34,19 @@
         <p>Общий принцип работы программы следующий:</p>
         
         <ul class="content-list">
-            <li>В <strong>проект</strong> импортируются внешние файлы в качестве <strong>ассетов</strong>, то есть ресурсов.</li>
-            <li>Автоматически создаётся специальный контейнер называемый <strong>композицией</strong>.</li>
-            <li>Внутри композиции на основе <strong>типа</strong> создаются <strong>слои</strong>, которые иерархически размещаются в <strong>древе сцены</strong>.</li>
-            <li>Каждый слой имеет встроенные <strong>атрибуты</strong> со своими <strong>значениями</strong>, которые могут соединяться между собой и управлять друг другом.</li>
-            <li>Любая композиция может стать специальным ассетом, который называется <strong>прекомпоз</strong> и затем встраиваться в другие композиции как обычный слой.</li>
+            <li>При создании <strong>проекта</strong> 
+            автоматически создаётся специальный контейнер называемый <strong style="color:#8B40BF;">композицией</strong>.</li>
+            <li>Затем в проект импортируются внешние файлы в качестве <strong style="color:#73768C;">ассетов</strong>, то есть ресурсов.</li>
+            <li>Внутри композиции на основе <strong style="color:#73768C;">типа</strong> создаются <strong style="color:#5962A6;">слои</strong>, которые иерархически размещаются в <strong style="color:#4D7DB3;">древе сцены</strong>.</li>
+            <li>Каждый слой имеет встроенные <strong style="color:#0D79F2;">атрибуты</strong> со своими <strong style="color:#F25E0D;">значениями</strong>, которые могут соединяться между собой и управлять друг другом.</li>
+            <li>Любую композицию можно преобразовать в специальный ассет, который называется <strong style="color:#DCE728;">прекомпоз</strong> и затем встроить его в другие композиции как обычный слой.</li>
+           
+            <li>Из проекта можно выводить различные файлы:</li> 
+             <ul>
+            <li><strong style="color:#59a662;">статичные изображения, видео и файлы формата Lottie</strong>.</li>
+            <li><strong style="color:#73768C;">фрагменты сцен</strong>.</li>
+            </ul>
+            
         </ul>
         
         <figure>
@@ -33,10 +54,18 @@
             <figcaption>Общая схема работы Cavalry</figcaption>
         </figure>
 
-        <p>Далее о каждом элементе подробнее. Начнём с проектов и ассетов.</p>
 
-        
-
+<div class="warn-box">
+            <div class="boxtitle">
+                <img class="icon" src="../imgs/warn.svg" width="20" height="20" alt="">
+                <span>Внимание</span>
+            </div>
+            <p>
+                В проекте всегда должна присутствовать хоть одна композиция!<br>Если вы удаляете несколько композиций, то самую последнюю удалить не получится.
+            </p>
+            
+            </div>
+            
         <div class="page-nav">
             <a href="example-files.html">◄ Файлы примеров</a>
             <a href="info-assets-and-projects.html">Проекты и ассеты ►</a>
@@ -52,6 +81,7 @@
 <script src="../header.js"></script>
 <script src="../footer.js"></script>
 <script src="../script.js"></script>
+<script src="../theme.js"></script>
 <script src="../smooth-scroll.js"></script> 
 </body>
 </html>

@@ -4,6 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Композиция | Cavalry</title>
+<script>
+    (function () {
+        const saved = localStorage.getItem('cavalry-theme');
+        const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+        const theme = saved || (prefersLight ? 'light' : 'dark');
+        if (theme === 'light') {
+            document.documentElement.classList.add('light');
+        }
+    })();
+</script>
+    <style>
+        .light-preload body { background: #fff; }
+    </style>
     <link rel="icon" href="../favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../style.css">
 </head>
@@ -16,10 +29,11 @@
 <nav class="page-toc">
     
     <ul>
-        <li><a class="toc-level-2" href="#Введение">Введение</a></li>
-        <li><a class="toc-level-2" href="#Заготовки композиции">Заготовки композиции</a></li>
-        <li><a class="toc-level-2" href="#Настройки композиции">Настройки композиции</a></li>
-        <li><a class="toc-level-2" href="#Прекомпоз">Прекомпоз</a></li>
+        <li><a class="toc-item" href="#Введение">Введение</a></li>
+        <li><a class="toc-item" href="#Заготовки композиции">Заготовки композиции</a></li>
+        <li><a class="toc-item" href="#Настройки композиции">Настройки композиции</a></li>
+        <li><a class="toc-item" href="#Прекомпоз">Прекомпоз</a></li>
+        <li><a class="toc-item" href="#Открытие прекомпоза">Открытие прекомпоза</a></li>
     </ul>
 </nav>
 
@@ -44,10 +58,21 @@
                 <img class="inline-icon" src="../imgs/comp.svg" width="20" height="20" alt="">.
             </li>
             <li>
-                В главном меню выбрать <code>Composition - New Composition</code>
+                В главном меню выбрать <code>Composition ► New Composition</code>
                 или нажать <code>CTRL</code>+<code>SHIFT</code>+<code>N</code>.
             </li>
         </ul>
+
+        <div class="warn-box">
+            <div class="boxtitle">
+                <img class="icon" src="../imgs/warn.svg" width="20" height="20" alt="">
+                <span>Примечание</span>
+            </div>
+            <p>
+                Композиции можно создавать только этими способами.
+                Её невозможно создать через <strong>Окно добавления слоёв</strong>!
+            </p>
+        </div>
 
         <p>
             Чтобы открыть композицию, дважды щёлкните по ней
@@ -60,6 +85,15 @@
             Используйте вкладки в верхней части <strong>Окна сцены</strong>,
             чтобы переключаться между открытыми композициями.
         </p>
+
+
+        <figure>
+            <img src="../imgs/comp-tabs.png">
+            <figcaption>Вкладки открытых композиций и активная композиция.</figcaption>
+        </figure>
+
+
+
 
         <h2 id="Заготовки композиции">Заготовки композиции</h2>
         <p>
@@ -196,9 +230,34 @@
         <h2 id="Прекомпоз">Прекомпоз</h2>
         <p>
             <strong>Прекомпоз</strong> (pre-comp) - это композиция, которая используется в качестве слоя
-            в другой композиции. Чтобы отобразить свойства прекомпоза, перетащите этот слой
-            из <strong>Окна сцены</strong> в <strong>Редактор атрибутов</strong>:
+            в другой композиции.
         </p>
+        
+        <p>Чтобы создать прекомпоз, можно выполнить одно из действий:</p>
+
+        <ul class="content-list">
+            <li>
+                Перетащить композицию из <strong>Окна ассетов</strong>
+                в <strong>Окно просмотра</strong> или <strong>Окно сцены</strong>
+                другой композиции.
+            </li>
+            <li>
+                Выбать несколько слоёв внутри существующей композиции
+                и затем:
+                <ul>
+                    <li>
+                        <code>Правый клик ► Pre-Compose Selection</code>.
+                    </li>
+                    <li>
+                        Либо использовать главное меню
+                        <code>Composition ► Pre-Compose</code>.
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        
+        <p>Чтобы отобразить свойства прекомпоза, перетащите этот слой
+            из <strong>Окна сцены</strong> в <strong>Редактор атрибутов</strong></p>
 
         <table>
     <thead>
@@ -265,90 +324,44 @@
         </tr>
     </tbody>
 </table>
-
         
 
-
-
-        <h2>Pre-Comp</h2>
         <p>
-            Composition, используемый как слой внутри другого Composition,
-            также называется <strong>Pre-Comp</strong>. Несколько Pre-Comps
-            можно добавить в другой Composition как способ создания копий
-            с единым «источником истины» — любые изменения, внесённые
-            в оригинальный Composition, будут распространяться на все
-            его Pre-Comps.
-        </p>
-
-        <h3>Создание Pre-Comp</h3>
-        <p>Чтобы создать Pre-Comp, выполните одно из действий:</p>
-
-        <ul class="content-list">
-            <li>
-                Перетащите Composition из <strong>Assets Window</strong>
-                во <strong>Viewport</strong> или <strong>Scene Tree</strong>
-                в другой Composition.
-            </li>
-            <li>
-                Выберите несколько слоёв внутри существующего Composition
-                и затем:
-                <ul>
-                    <li>
-                        Правый клик &gt; <strong>Pre-Compose Selection</strong>.
-                    </li>
-                    <li>
-                        Или используйте меню
-                        <strong>Composition &gt; Pre-Compose</strong>.
-                    </li>
-                </ul>
-            </li>
-        </ul>
-
-        <p>
-            См. <a href="composition-precomp-overrides.html">Pre-Comp Overrides</a>
-            — там описан способ использования Compositions для создания
-            редактируемых «шаблонов».
-        </p>
-
-        <p>
-            Если Pre-Comp уже существует в Composition, можно заменить
-            его ссылку на другой Composition из <strong>Assets Window</strong>.
-            Для этого выполните одно из действий:
+            Если прекомпоз уже существует в композиции, можно заменить
+            его ссылку на другую композицию из <strong>Окна ассетов</strong>.
+            Для этого нужно выполнить одно из действий:
         </p>
 
         <ul class="content-list">
             <li>
-                Удерживая <strong>Option/Alt</strong>, перетащите Composition
-                из <strong>Assets Window</strong> на строку Pre-Comp
-                в <strong>Scene Window</strong>.
+                Удерживая <code>Alt</code>, перетащить композицию
+                из <strong>Окна ассетов</strong> на строку прекомпоза
+                в <strong>Окне сцены</strong>.
             </li>
             <li>
-                Выберите несколько Pre-Comps в <strong>Scene Window</strong>
-                и затем, удерживая <strong>Option/Alt</strong>, перетащите
-                Composition из <strong>Assets Window</strong>
-                в <strong>Scene Window</strong>.
+                Выбрать несколько прекомпозов в <strong>Окне сцены</strong>
+                и затем, удерживая <code>Alt</code>, перетащите
+                композицию из <strong>Окна ассетов</strong>
+                в <strong>Окно сцены</strong>.
             </li>
         </ul>
 
-        <h3>Установка Pre-Comp как активного Composition</h3>
+        <h3 id="Открытие прекомпоза">Открытие прекомпоза</h3>
         <p>
-            Нажатие кнопки <strong>Open</strong> или
-            <strong>Option/Alt + Cmd/Ctrl + двойной щелчок</strong>
-            по строке Composition Layer в <strong>Scene Window</strong>
-            откроет этот Composition (сделав его активным).
+            Чтобы открыть прекомпоз и сделать его активной композицией для редактирования,
+            можно выполнить одно из действий в <strong>Окне сцены</strong>:
+            
+            <ul class="content-list">
+                <li>
+                    Нажать кнопку <img class="inline-icon" src="../imgs/precomp-open.png" width="56" height="18" alt=""> в правой части строки прекомпоза.
+                </li>
+                <li>
+                    Либо <code>CTRL</code>+<code>ALT</code>+<code>2х клик</code> по строке прекомпоза.
+                </li>
+            </ul>
         </p>
 
-        <div class="note-box">
-            <div class="boxtitle">
-                <img class="icon" src="../imgs/note.svg" width="20" height="20" alt="">
-                <span>Примечание</span>
-            </div>
-            <p>
-                Единственный способ создать новый Composition —
-                через <strong>Assets Window</strong> или меню.
-                Его нельзя создать через <strong>Add Layers Window</strong>.
-            </p>
-        </div>
+
 
         <div class="page-nav">
             <a href="layers.html">◄ Слои</a>
@@ -365,6 +378,7 @@
 <script src="../header.js"></script>
 <script src="../footer.js"></script>
 <script src="../script.js"></script>
+<script src="../theme.js"></script>
 <script src="../smooth-scroll.js"></script> 
 </body>
 </html>

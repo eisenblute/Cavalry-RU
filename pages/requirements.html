@@ -4,6 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Системные требования | Cavalry</title>
+    <script>
+    (function () {
+        const saved = localStorage.getItem('cavalry-theme');
+        const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+        const theme = saved || (prefersLight ? 'light' : 'dark');
+        if (theme === 'light') {
+            document.documentElement.classList.add('light');
+        }
+    })();
+</script>
+    <style>
+        .light-preload body { background: #fff; }
+    </style>
     <link rel="stylesheet" href="../style.css">
     <link rel="icon" href="../favicon.ico" type="image/x-icon">
 </head>
@@ -16,9 +29,9 @@
 <nav class="page-toc">
     
     <ul>
-        <li><a class="toc-level-2" href="#Операционная система">Операционная система</a></li>
-        <li><a class="toc-level-2" href="#Аппаратное обеспечение">Аппаратное обеспечение</a></li>
-        <li><a class="toc-level-2" href="#Системная диагностика">Системная диагностика</a></li>
+        <li><a class="toc-item" href="#Операционная система">Операционная система</a></li>
+        <li><a class="toc-item" href="#Аппаратное обеспечение">Аппаратное обеспечение</a></li>
+        <li><a class="toc-item" href="#Системная диагностика">Системная диагностика</a></li>
     </ul>
 </nav>
 
@@ -31,7 +44,7 @@
         <h3>macOS</h3>
         <p>macOS 12.0 (Monterey) и выше.</p>
 
-        <h4>Поддержка macOS</h4>
+        <h3>Поддержка macOS</h3>
         <p>Cavalry 1.5.6 — последняя версия, поддерживающая macOS 10.14 и выше.</p>
         <p>Cavalry 1.1.1 — последняя версия, поддерживающая macOS 10.13 и выше.</p>
 
@@ -137,6 +150,7 @@
 <script src="../header.js"></script>
 <script src="../footer.js"></script>
 <script src="../script.js"></script>
+<script src="../theme.js"></script>
 <script src="../smooth-scroll.js"></script> 
 </body>
 </html>

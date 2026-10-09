@@ -4,6 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Скачивание и установка | Cavalry</title>
+    <script>
+    (function () {
+        const saved = localStorage.getItem('cavalry-theme');
+        const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+        const theme = saved || (prefersLight ? 'light' : 'dark');
+        if (theme === 'light') {
+            document.documentElement.classList.add('light');
+        }
+    })();
+</script>
+    <style>
+        .light-preload body { background: #ffffff; }
+    </style>
     <link rel="stylesheet" href="../style.css">
     <link rel="icon" href="../favicon.ico" type="image/x-icon">
 </head>
@@ -15,9 +28,9 @@
 
 <nav class="page-toc">
     <ul>
-        <li><a class="toc-level-2" href="#Скачивание">Скачивание</a></li>
-        <li><a class="toc-level-2" href="#Установка">Установка</a></li>
-        <li><a class="toc-level-2" href="#Удаление">Удаление</a></li>
+        <li><a class="toc-item" href="#Скачивание">Скачивание</a></li>
+        <li><a class="toc-item" href="#Установка">Установка</a></li>
+        <li><a class="toc-item" href="#Удаление">Удаление</a></li>
     </ul>
 </nav>
 
@@ -162,6 +175,7 @@
 <script src="../header.js"></script>
 <script src="../footer.js"></script>
 <script src="../script.js"></script>
+<script src="../theme.js"></script>
 <script src="../smooth-scroll.js"></script> 
 </body>
 </html>
