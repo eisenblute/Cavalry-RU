@@ -1,47 +1,69 @@
-// script.js — общая логика страницы
-document.addEventListener('DOMContentLoaded', () => {
+// script.js — ES5-совместимая версия
+document.addEventListener('DOMContentLoaded', function () {
 
     // ===== Создаём оверлей (если нет) =====
-    let overlay = document.querySelector('.overlay');
+    var overlay = document.querySelector('.overlay');
     if (!overlay) {
         overlay = document.createElement('div');
         overlay.className = 'overlay';
         document.body.appendChild(overlay);
     }
 
-    // ===== Открытие/закрытие сайдбара через делегирование =====
-    // Работает, даже если .burger появится позже (например, из header.js)
-    document.addEventListener('click', (e) => {
+    // ===== Делегирование кликов =====
+    document.addEventListener('click', function (e) {
+        var target = e.target || e.srcElement;
+
         // Клик по бургеру
-        if (e.target.closest('.burger')) {
-            const aside = document.querySelector('aside');
-            if (!aside) return;
-            aside.classList.toggle('open');
-            overlay.classList.toggle('open');
-            return;
+        var el = target;
+        while (el && el !== document) {
+            if (el.className && el.className.indexOf('burger') !== -1) {
+                var aside = document.querySelector('aside');
+                if (aside) {
+                    if (/\bopen\b/.test(aside.className)) {
+                        aside.className = aside.className.replace(/\bopen\b/g, '').replace(/\s+/g, ' ').trim();
+                        overlay.className = overlay.className.replace(/\bopen\b/g, '').replace(/\s+/g, ' ').trim();
+                    } else {
+                        aside.className = (aside.className + ' open').trim();
+                        overlay.className = (overlay.className + ' open').trim();
+                    }
+                }
+                return;
+            }
+            el = el.parentNode;
         }
 
         // Клик по оверлею
-        if (e.target.classList.contains('overlay')) {
-            document.querySelector('aside')?.classList.remove('open');
-            overlay.classList.remove('open');
+        if (target === overlay) {
+            var aside2 = document.querySelector('aside');
+            if (aside2) aside2.className = aside2.className.replace(/\bopen\b/g, '').replace(/\s+/g, ' ').trim();
+            overlay.className = overlay.className.replace(/\bopen\b/g, '').replace(/\s+/g, ' ').trim();
             return;
         }
 
         // Клик по ссылке в сайдбаре — закрываем на мобиле
-        if (e.target.closest('aside a')) {
-            if (window.innerWidth <= 900) {
-                document.querySelector('aside')?.classList.remove('open');
-                overlay.classList.remove('open');
+        el = target;
+        while (el && el !== document) {
+            if (el.tagName === 'A' && el.parentNode && el.parentNode.parentNode) {
+                var sidebar = el.parentNode.parentNode;
+                if (sidebar.tagName === 'ASIDE' || (sidebar.parentNode && sidebar.parentNode.tagName === 'ASIDE')) {
+                    if (window.innerWidth <= 900) {
+                        var aside3 = document.querySelector('aside');
+                        if (aside3) aside3.className = aside3.className.replace(/\bopen\b/g, '').replace(/\s+/g, ' ').trim();
+                        overlay.className = overlay.className.replace(/\bopen\b/g, '').replace(/\s+/g, ' ').trim();
+                    }
+                    return;
+                }
             }
+            el = el.parentNode;
         }
     });
 
     // ===== Закрытие по Esc =====
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            document.querySelector('aside')?.classList.remove('open');
-            overlay.classList.remove('open');
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' || e.keyCode === 27) {
+            var aside = document.querySelector('aside');
+            if (aside) aside.className = aside.className.replace(/\bopen\b/g, '').replace(/\s+/g, ' ').trim();
+            overlay.className = overlay.className.replace(/\bopen\b/g, '').replace(/\s+/g, ' ').trim();
         }
     });
 });

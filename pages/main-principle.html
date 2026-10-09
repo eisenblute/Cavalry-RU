@@ -6,11 +6,25 @@
     <title>Общая схема работы | Cavalry</title>
     <script>
     (function () {
-        const saved = localStorage.getItem('cavalry-theme');
-        const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
-        const theme = saved || (prefersLight ? 'light' : 'dark');
+        var saved = null;
+        try {
+            saved = localStorage.getItem('cavalry-theme');
+        } catch (e) {
+            saved = null;
+        }
+
+        var prefersLight = false;
+        try {
+            if (window.matchMedia) {
+                prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+            }
+        } catch (e) {
+            prefersLight = false;
+        }
+
+        var theme = saved || (prefersLight ? 'light' : 'dark');
         if (theme === 'light') {
-            document.documentElement.classList.add('light');
+            document.documentElement.className += ' light';
         }
     })();
 </script>

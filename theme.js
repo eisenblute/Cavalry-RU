@@ -1,61 +1,118 @@
-// theme.js
-// Переключение тёмной/светлой темы через класс на <html>.
-// Класс ставится инлайн-скриптом в <head> ДО отрисовки — против мигания.
-
+// theme.js — ES5-совместимая версия
 (function () {
     'use strict';
 
-    const STORAGE_KEY = 'cavalry-theme';
-    const html = document.documentElement;
+    var STORAGE_KEY = 'cavalry-theme';
+    var html = document.documentElement;
 
-    // ===== Применяем тему =====
-    function applyTheme(theme) {
-        if (theme === 'light') {
-            html.classList.add('light');
-        } else {
-            html.classList.remove('light');
+    // ===== Безопасная работа с localStorage =====
+    function getSavedTheme() {
+        try {
+            return localStorage.getItem(STORAGE_KEY);
+        } catch (e) {
+            return null;
         }
     }
 
-    // ===== Определяем предпочитаемую тему =====
-    function getPreferredTheme() {
-        const saved = localStorage.getItem(STORAGE_KEY);
-        if (saved === 'light' || saved === 'dark') return saved;
-
-        return window.matchMedia('(prefers-color-scheme: light)').matches
-            ? 'light'
-            : 'dark';
+    function saveTheme(theme) {
+        try {
+            localStorage.setItem(STORAGE_KEY, theme);
+        } catch (e) {
+            // Игнорируем — тема применится, но не сохранится
+        }
     }
 
-    // ===== Отключаем transition при загрузке (против мигания) =====
-    html.classList.add('no-transition');
+    // ===== Применяем тему =====
+    function applyTheme(theme) {
+        var isLight = (theme === 'light');
+        var classes = html.className.replace(/\blight\b/g, '').replace(/\s+/g, ' ').trim();
 
-    // ===== Применяем тему СРАЗУ (на случай, если инлайн-скрипт не отработал) =====
+        if (isLight) {
+            classes = (classes + ' light').trim();
+        }
+
+        html.className = classes;
+    }
+
+    // ===== Определяем тему =====
+    function getPreferredTheme() {
+        var saved = getSavedTheme();
+        if (saved === 'light' || saved === 'dark') return saved;
+
+        var prefersLight = false;
+        try {
+            if (window.matchMedia) {
+                prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+            }
+        } catch (e) {
+            prefersLight = false;
+        }
+
+        return prefersLight ? 'light' : 'dark';
+    }
+
+    // ===== Отключаем transition при загрузке =====
+    html.className += ' no-transition';
+
+    // ===== Применяем тему сразу =====
     applyTheme(getPreferredTheme());
 
     // ===== Включаем transition после первого кадра =====
-    requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-            html.classList.remove('no-transition');
+    var raf = window.requestAnimationFrame
+        || window.webkitRequestAnimationFrame
+        || function (cb) { return setTimeout(cb, 16); };
+
+    raf(function () {
+        raf(function () {
+            html.className = html.className.replace(/\bno-transition\b/g, '').replace(/\s+/g, ' ').trim();
         });
     });
 
-    // ===== Клик по кнопке темы (делегирование) =====
-    document.addEventListener('click', (e) => {
-        const btn = e.target.closest('#themeToggle');
-        if (!btn) return;
+    // ===== Обработчик клика (делегирование, ES5) =====
+    function findClosest(el, className) {
+        while (el && el !== document) {
+            if (el.className && el.className.indexOf(className) !== -1) return el;
+            el = el.parentNode;
+        }
+        return null;
+    }
 
-        const isLight = html.classList.contains('light');
-        const newTheme = isLight ? 'dark' : 'light';
+    document.addEventListener('click', function (e) {
+        var target = e.target || e.srcElement;
+        var btn = target;
+
+        // Ищем #themeToggle вверх по DOM
+        while (btn && btn !== document) {
+            if (btn.id === 'themeToggle') break;
+            btn = btn.parentNode;
+        }
+
+        if (!btn || btn === document) return;
+
+        var isLight = /\blight\b/.test(html.className);
+        var newTheme = isLight ? 'dark' : 'light';
 
         applyTheme(newTheme);
-        localStorage.setItem(STORAGE_KEY, newTheme);
+        saveTheme(newTheme);
     });
 
     // ===== Реакция на смену системной темы =====
-    window.matchMedia('(prefers-color-scheme: light)')
-        .addEventListener('change', (e) => {
-            if (localStorage.getItem(STORAGE_KEY)) return;   // выбор пользователя важнее
-            applyTheme(e.matches ? 'light' : 'dark');
-        });
+    try {
+        if (window.matchMedia) {
+            var mq = window.matchMedia('(prefers-color-scheme: light)');
+            var listener = function (e) {
+                if (getSavedTheme()) return;
+                applyTheme(e.matches ? 'light' : 'dark');
+            };
+
+            if (mq.addEventListener) {
+                mq.addEventListener('change', listener);
+            } else if (mq.addListener) {
+                // Старый API (Safari < 14, старые Chrome)
+                mq.addListener(listener);
+            }
+        }
+    } catch (e) {
+        // Игнорируем
+    }
 })();
