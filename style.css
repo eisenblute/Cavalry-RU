@@ -320,6 +320,7 @@ a.nav-group-title:hover {
     border-top: 1px solid #313131;
     border-bottom: 1px solid #313131;
     gap: 1rem;
+    
 }
 
 .page-nav a {
@@ -330,12 +331,27 @@ a.nav-group-title:hover {
     border: 1px solid #313131;
     border-radius: 6px;
     background-color: #222;
+    flex: 1;                     /* 👈 одинаковая ширина на десктопе */
+    max-width: 48%;              /* 👈 не растягиваются на всю ширину */
+    text-align: center;
+    
+}
+
+html.light .page-nav a {
+    color: #222d3e;
+    border-color: #8690a0;
+    background-color: #f0f2f5;
 }
 
 .page-nav a:hover {
     border-color: #6ea8fe;
     background-color: rgba(110, 168, 254, 0.08);
     text-decoration: none;
+}
+
+html.light .page-nav a:hover {
+    border-color: #222d3e;
+    background-color: rgba(34, 45, 62, 0.08);
 }
 
 /* Страничное меню под шапкой */
@@ -1274,5 +1290,18 @@ html.light footer {
 
     .example-item img {
         height: 160px;
+    }
+
+    .page-nav {
+        flex-direction: column;   /* 👈 вертикально */
+        gap: 0.55rem;
+    }
+
+    .page-nav a {
+        max-width: 100%;          /* 👈 на всю ширину */
+        width: 100%;
+        text-align: center;
+        font-size: 0.9rem;
+        padding: 0.7rem 1rem;
     }
 }
